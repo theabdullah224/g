@@ -1,0 +1,218 @@
+
+marquee{
+    height: fit-content;
+    padding: 15px 0;
+    width: 100vw;
+    /* background-color: ; */
+    display: flex;
+    align-items: center;
+    color: white;
+    /* font-size: 1.2rem; */
+/* margin-bottom: 2vh; */
+/* font-weight: 100; */
+    overflow-x: hidden;
+}
+.customizable {
+    height: fit-content;
+    box-sizing: border-box;
+    width: 100vw;
+    display: flex;
+    align-items: center;
+    box-sizing: border-box;
+    padding-left:12.5vw ;
+    padding-right: 12.5vw;
+    padding-top: 12vh;
+    padding-bottom: 12vh;
+    /* margin-bottom: 14rem; */
+    box-sizing: border-box;
+    box-sizing: border-box;
+    box-sizing: border-box;
+    box-sizing: border-box;
+    position: relative;
+    background-color: #f6f7f5;
+
+
+}
+
+.left-content {
+    width: fit-content;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-image: url('./Resource/gb.png');
+    background-size: 50%;
+    background-position: center;
+    background-repeat: no-repeat;
+    position: relative;
+}
+.gb{
+    position: absolute;
+    z-index: -1;
+    opacity: 1;
+    top: 132vh;
+    left: 15vw;
+
+}
+.image-side {
+
+    width: fit-content;
+    position: relative;
+    right: -3.6vw;
+}
+
+
+.content {
+    height: fit-content;
+    width: 34.984375vw;
+  
+
+
+}
+
+.fancymeal {
+    /* border-bottom: 4px solid #73806580; */
+    display: inline-block;
+    /* font-size: 1.5rem; */
+    margin-bottom: 2vh;
+    /* font-weight: 400; */
+
+
+}
+.rh3recipt{
+    /* font-weight: 400 !important; */
+    /* font-size: 1.8rem !important; */
+}
+.rprecipt{
+    /* font-size: 1.1rem !important; */
+margin-bottom: 2vh;
+/* font-weight: 100 !important; */
+}
+.txt-1 {
+    /* font-size:2.60416667vw; */
+    /* font-weight: 400; */
+    margin-bottom: 3vh;
+}
+
+.p-txt {
+    /* font-size: 1.8229vw ; */
+}
+
+.image-side {
+    display: flex;
+    align-items: right;
+    justify-content: center;
+}
+
+.imgcccc{
+    height: 34.79vw;
+    width: 36.35vw;
+
+    background-image: url('./Resource/mimg1.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    border-radius: 25px;
+    -webkit-border-radius: 25px;
+    -moz-border-radius: 25px;
+    -ms-border-radius: 25px;
+    -o-border-radius: 25px;
+    box-shadow: -15px 15px 0px #738065;
+    position: relative;
+    left: 0vw;
+}
+
+.favicon111 {
+    height: 7.81vw;
+    width: 7.81vw;
+    position: relative;
+    top: -3vw;
+    left: 31vw;
+}
+
+
+@media screen and (max-width: 900px){
+    .imgcccc{
+        height: 38.79vw;
+        width: 40.35vw;
+        /* left: 2vw; */
+    }
+    .favicon111{
+        left: 35vw;
+    }
+   
+}
+@media screen and (max-width: 850px){
+
+    .fancymeal{
+        /* font-size: 1.5rem; */
+    }
+    .txt-1 {
+        /* font-size:2rem; */
+    }
+    .p-txt {
+        /* font-size: 1rem ; */
+    }
+
+}
+@media screen and (max-width: 450px) {
+    .customizable {
+        flex-direction: column;
+        max-width: 100vw;
+        height: fit-content;
+        padding-left: 16px;
+        box-sizing: border-box;
+        /* overflow-x: hidden !important; */
+    }
+
+    .left-content {
+        width: 100vw;
+        height: fit-content;
+        position: normal;
+        left: 0;
+    }
+
+    .image-side {
+        width: 100vw;
+        height: fit-content;
+        padding-top: 20px;
+        box-sizing: border-box;
+        box-sizing: border-box;
+    }
+
+    .content {
+        padding: 0 26px 0 46px;
+        box-sizing: border-box;
+        width: 100vw;
+    }
+
+    .fancymeal {
+        /* font-size: 25px; */
+        margin-bottom: 4vh;
+    }
+
+    .txt-1 {
+        /* font-size: 2rem; */
+        margin-bottom: 4vh;
+}
+
+    .p-txt {
+        /* font-size: 1rem; */
+        margin-bottom: 4vh;
+}
+
+    .imgcccc{
+        position: relative;
+        left: -2vw;
+        height: 80vw;
+        width: 85vw;
+        box-shadow: -8px 8px 0px #738065;
+        margin-top: 10vw;
+    }
+
+    .favicon111 {
+        height: 20vw;
+        width: 20vw;
+        top: -7vw;
+        left: 70vw;
+    }
+}

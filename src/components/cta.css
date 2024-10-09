@@ -1,0 +1,89 @@
+.ctac {
+    height: fit-content;
+    width: 100vw;
+    background-image: url('./Resource/ctaplans.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: top center;
+  }
+  
+  .cta1c {
+    padding: 12vh 12.5vw 12vh 12.5vw;
+    padding-top: 7rem;
+    padding-bottom: 7rem;
+    display: flex;
+    align-items: center;
+    height: inherit;
+    width: inherit;
+   background-color: rgba(22, 22, 22, 0.40);
+  }
+  
+  .citemc {
+    color: white;
+  }
+  
+  .ctabtn {
+    background-color: white;
+    color: #738065;
+    border: 2px solid #738065;
+    width: -moz-fit-content;
+    width: fit-content;
+    height: -moz-fit-content;
+    height: fit-content;
+    /* font-size: 1.1rem; */
+    padding: 16px 38px;
+  }
+  
+  .ctah3c {
+    border-bottom: 4px solid white;
+    display: inline-block;
+    /* font-size: 1.5rem; */
+    margin-bottom: 2vh;
+    /* font-weight: 400; */
+  }
+  
+  .ctah2c {
+    /* font-size: 2.7rem; */
+  /* font-weight: 400; */
+    margin-bottom: 3vh;
+  }
+  
+  .ctapc {
+    margin-bottom: 5vh;
+    /* font-size: 1.1rem; */
+  /* font-weight: 100; */
+  }
+  
+  @media screen and (max-width: 450px) {
+    .ctah3c {
+      /* font-size: 35px; */
+    }
+  
+    .ctah2c {
+      /* font-size: 45px; */
+    }
+  
+    .ctapc {
+      /* font-size: 26px; */
+    }
+  
+    .ctabtn {
+      width: 200px;
+      height: 70px;
+    }
+  }
+  
+  @media screen and (min-width: 451px) {
+    .ctah3c {
+      /* font-size: 25px; */
+    }
+  
+    .ctah2c {
+      /* font-size: 35px; */
+    }
+  
+    .ctapc {
+      /* font-size: 22px; */
+    }
+  }
+  

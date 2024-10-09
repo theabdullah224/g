@@ -1,0 +1,119 @@
+.faq-container {
+  margin: 0 auto;
+  width: 74vw;
+  max-width: 1436px;
+}
+
+.faq {
+  background-color: transparent;
+  border-bottom: 1px solid #738065;
+  margin: 20px 0;
+  overflow: hidden;
+  padding: 30px;
+  position: relative;
+  transition: 0.3s ease;
+}
+
+.faq.active {
+  background-color: #fff;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1), 0 3px 6px rgba(0, 0, 0, 0.1);
+  border-radius: 15px;
+  -webkit-border-radius: 15px;
+  -moz-border-radius: 15px;
+  -ms-border-radius: 15px;
+  -o-border-radius: 15px;
+}
+
+.faq.active .faq-title {
+  color: #738065;
+}
+
+.faq.active {
+  border-bottom: none;
+  transition: .3s linear;
+  -webkit-transition: .3s linear;
+  -moz-transition: .3s linear;
+  -ms-transition: .3s linear;
+  -o-transition: .3s linear;
+}
+
+.plusicon {
+  margin-left: 15px !important;
+}
+
+.faq.active::before,
+.faq.active::after {
+  /* font-size: 7rem; */
+  left: 20px;
+  opacity: 0.2;
+  position: absolute;
+  top: 20px;
+  z-index: 0;
+}
+
+.faq.active::before {
+  left: -30px;
+  top: -10px;
+  transform: rotateY(180deg);
+}
+
+.faq-title {
+  margin: 0 35px 0 0;
+  /* font-size: 1.3rem; */
+  /* font-weight: 400; */
+}
+
+.faq-text {
+  display: none;
+  margin: 30px 0 0;
+  /* font-size: 1.1rem; */
+/* font-weight: 100; */
+}
+
+.faq.active .faq-text {
+  display: block;
+}
+
+.faq-toggle {
+  align-items: center;
+  background-color: transparent;
+  border: 0;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  /* font-size: 1rem; */
+  height: 30px;
+  justify-content: center;
+  padding: 0;
+  position: absolute;
+  right: 30px;
+  top: 30px;
+  width: 30px;
+}
+
+.faq-toggle .fa-times,
+.faq.active .faq-toggle .fa-chevron-down {
+  display: none;
+}
+
+.faq.active .faq-toggle .fa-times {
+  color: #fff;
+  display: block;
+}
+
+.faq-toggle .fa-chevron-down {
+  display: block;
+}
+
+.faq.active .faq-toggle {
+  background-color: transparent;
+}
+
+@media screen and (max-width: 450px) {
+  .faq-title {
+    /* font-size: 26px;  */
+  }
+  .faq-text {
+    /* font-size: 18px;  */
+  }
+}

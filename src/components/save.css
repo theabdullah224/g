@@ -1,0 +1,343 @@
+.save {
+    height: fit-content;
+    box-sizing: border-box;
+    width: 100vw;
+    display: flex;
+    background-color: #f6f7f5 !important;
+    padding-left: 12.5vw;
+    padding-right: 12.5vw;
+    padding-top: 12vh;
+    padding-bottom: 12vh;
+}
+
+.left-contentsave {
+    width: 35.52vw;
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+    justify-content: center;
+    background-image: url('./Resource/gb.png');
+    background-size: 50%;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.gb {
+    position: absolute;
+    z-index: -1;
+    opacity: 1;
+    top: 132vh;
+    left: 15vw;
+}
+
+.image-sidesavec {
+    width: 50vw;
+}
+
+.contentsave {
+    height: fit-content;
+    width: fit-content;
+}
+
+.fancys {
+    /* border-bottom: 4px solid white; */
+    /* color: white; */
+    display: inline-block;
+    /* font-size: 1.5rem; */
+    margin-bottom: 2vh;
+    /* font-weight: 400; */
+    margin-bottom: 2vh;
+}
+
+.txt-s {
+    /* font-size: 2.7rem; */
+    /* font-weight: 400; */
+    margin-bottom: 2vh;
+    /* color: white; */
+}
+
+.p-txts {
+    /* font-size: 1.1rem; */
+    margin-bottom: 2vh;
+    /* font-weight: 100; */
+    /* color: white; */
+}
+
+.ponesave {
+    /* font-size: 1.1rem; */
+    margin-bottom: 2vh;
+    /* font-weight: 100; */
+    /* color: white;; */
+}
+
+.image-sidesavec {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.imgd {
+    height: 34.79vw;
+    width: 36.35vw;
+    position: relative;
+    left: 3.9vw;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    border-radius: 25px;
+    box-shadow: -15px 15px 0px white;
+}
+
+.favicon11 {
+    height: 7.81vw;
+    width: 7.81vw;
+    position: relative;
+    top: -4vw;
+    left: 32vw;
+}
+
+.icon1, .icon2, .icon3 {
+    width: 50px; 
+    height: 50px; 
+}
+
+.main {
+    width: fit-content;
+    display: flex;
+    flex-direction: column;
+}
+
+.itemssave {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    gap: 2vw;
+    width: fit-content;
+    
+}
+
+.onesave {
+    
+}
+
+.ponesave {
+    display: flex;
+    flex-wrap: wrap;
+    padding-top: 5px;
+}
+
+.dbtnsave {
+    display: flex;
+    margin-top: 4vh;
+    gap: 1vw;
+}
+
+.learnmoresave {
+    width: fit-content;
+    height: -moz-fit-content;
+    height: fit-content;
+    /* font-size: 1.1rem; */
+    padding: 16px 40px;
+    background-color: white;
+    color: black;
+}
+
+.signupsave {
+    width: fit-content;
+    height: -moz-fit-content;
+    height: fit-content;
+    /* font-size: 1.1rem; */
+    padding: 14px 40px;
+    border: 2px solid white;
+    
+}
+
+@media screen and (max-width: 900px) {
+    .imgd {
+        height: 38.79vw;
+        width: 40.35vw;
+    }
+    .favicon11 {
+        left: 35vw;
+    }
+}
+@media screen and (max-width: 700px){
+    .itemssave{
+        flex-direction: column;
+    }
+
+}
+@media screen and (max-width: 450px) {
+    .save {
+        flex-direction: column;
+        width: 100vw;
+        padding-bottom: 7vh;
+        padding: 0;
+    }
+    .contentsave{
+        padding: 0 !important;
+    }
+    .left-contentsave {
+        width: 100vw;
+        height: fit-content;
+        padding-top: 6vh;
+        padding-left: 6vw;
+        padding-right: 6vw;
+    }
+
+    .image-sidesavec {
+        width: 100vw;
+        height: fit-content;
+        padding-top: 20px;
+    }
+
+    .contentsave {
+        padding: 0;
+    }
+
+    .fancys {
+        /* font-size: 25px;  */
+        margin-bottom: 4vh;
+    }
+
+    .txt-s {
+        /* font-size: 34px;  */
+        margin-bottom: 4vh;
+    }
+
+    .p-txts, .ponesave {
+        margin-bottom: 4vh;
+    }
+
+    .imgd {
+        height: 80vw;
+        width: 85vw;
+        box-shadow: -8px 8px 0px white;
+        left: 0vw;
+        margin-bottom: 6vh;
+    }
+
+    .favicon11 {
+        height: 20vw;
+        width: 20vw;
+        top: -7vw;
+        left: 70vw;
+    }
+
+    .main, .onesave, .ponesave {
+        width: 80vw;
+    }
+
+    .dbtnsave{
+        justify-content: space-around;
+    }
+}
+
+@media screen and (max-width: 850px) {
+    .fancys {
+        /* font-size: calc(30px * (850 / 1920));  */
+    }
+
+    .txt-s {
+        /* font-size: calc(50px * (850 / 1920));  */
+    }
+
+    .p-txts, .ponesave {
+        /* font-size: calc(22px * (850 / 1920));  */
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .fancys {
+        /* font-size: calc(30px * (600 / 1920));  */
+    }
+
+    .txt-s {
+        /* font-size: calc(50px * (600 / 1920));  */
+    }
+
+    .p-txts, .ponesave {
+        /* font-size: calc(22px * (600 / 1920));  */
+    }
+}
+
+@media screen and (max-width: 450px) {
+    .save {
+        flex-direction: column;
+        width: 100vw;
+        padding-bottom: 7vh;
+        height: fit-content;
+        box-sizing: border-box;
+        padding: 0;
+    }
+
+    .left-contentsave {
+        width: 100vw;
+        height: fit-content;
+        padding-top: 6vh;
+        padding-left: 6vw;
+        padding-right: 6vw;
+    }
+
+    .image-sidesavec {
+        width: 100vw;
+        height: fit-content;
+        padding-top: 20px;
+        box-sizing: border-box;
+    }
+
+    .contentsave {
+        padding: 0;
+    }
+
+    .fancys {
+        /* font-size: 25px; */
+        margin-bottom: 4vh;
+    }
+
+    .txt-s {
+        /* font-size: 34px; */
+        margin-bottom: 4vh;
+    }
+
+    .p-txts {
+        /* font-size: 22px ; */
+        margin-bottom: 4vh;
+    }
+
+    .ponesave {
+        /* font-size: 22px; */
+    }
+
+    .imgd {
+        height: 80vw;
+        width: 85vw;
+        box-shadow: -8px 8px 0px white;
+        left: 0vw;
+        margin-bottom: 6vh;
+    }
+
+    .favicon11 {
+        height: 20vw;
+        width: 20vw;
+        top: -7vw;
+        left: 70vw;
+    }
+
+    .main {
+        width: 80vw;
+    }
+
+    .onesave {
+        width: 80vw;
+    }
+
+    .ponesave {
+        width: 80vw;
+    }
+
+   
+    .image-sidesavec{
+        margin-top: 4vh;
+    }
+    
+}

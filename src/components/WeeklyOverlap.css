@@ -1,0 +1,245 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    overflow-x: hidden;
+}
+
+.weeklyoverlap {
+    height: fit-content;
+    width: 100vw;
+    position: relative;
+}
+
+.weekly {
+    height: fit-content;
+    width: 100vw;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.colorweekly {
+    height: inherit;
+    width: 100vw;
+    background-color: rgba(115, 128, 101, 0.89);
+    box-sizing: border-box;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    padding-bottom: 20vh;
+    padding-top: 5vh;
+}
+
+.itemweekly {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    height: fit-content;
+    margin: 2vw 12.5vw;
+    padding: 5vh 12vw 0;
+    box-sizing: border-box;
+}
+
+.fancy-txtweekly {
+    border-bottom: 4px solid #ffffff;
+    text-align: center;
+    /* font-size: 1.5rem;  */
+    margin-bottom: 2vh;
+    /* font-weight: 400; */
+}
+
+.txt-h2weekly {
+    /* font-size: 2.7rem ;  */
+    /* font-weight: 400; */
+    text-align: center;
+    text-wrap: wrap;
+    margin-top: 2vh;
+}
+
+.mdtweekly {
+    /* font-size: 1.1rem;  */
+    /* font-weight: 100; */
+    text-align: center;
+    margin-bottom: 2vh;
+    margin-top: 4vh;
+}
+
+.w-img {
+    height: 30vw;
+    width: 70vw;
+    display: block;
+    margin: auto;
+    background-size: cover;
+    background-position: top center;
+    background-repeat: no-repeat;
+    position: relative;
+    z-index: 88;
+    border-radius: 2vw;
+    top: -10vh;
+}
+
+.wfv {
+    position: relative;
+    top: 26vw;
+    left: 66vw;
+    height: 6vw;
+    width: 6vw;
+    z-index: 99;
+}
+
+.learnmoreweekly {
+    background-color: white;
+    color: #738065;
+    border: 2px solid #738065;
+    width: fit-content;
+    height: fit-content;
+    /* font-size: 1.1rem; */
+  padding: 16px 38px ;
+    order: 2;
+}
+.learnmoreweekly:hover{
+    color: white;
+}
+.signupweekly {
+    width: fit-content;
+    height: fit-content;
+    /* font-size: 1.1rem; */
+  padding: 14px 40px ;
+  border: 2px solid white;
+    order: 1;
+}
+
+
+.input {
+    margin-top: 6vh;
+}
+
+.input button {
+    width: 40vw;
+    color: black;
+    height: 10vh;
+    /* border-radius: 50vw; */
+}
+
+.weeklyemail {
+    width: 40vw ;
+    height: 75px;
+    /* border-radius: 50vw; */
+    color: white;
+    border: none;
+    box-shadow: none !important;
+    padding: 1vw 2vw;
+    box-sizing: border-box;
+    background-color: transparent;
+    border: 2px solid #ffffff;
+}
+#weeklymailover:focus{
+    border: 2px solid white !important;
+}
+
+.weeklyemail::placeholder {
+    color: white;
+}
+.weeklysignupmail{
+    height: 75px !important;
+    margin-top: 5vh;
+    background-color: white;
+}
+
+@media screen and (max-width: 1300px) {
+    .fancy-txtweekly {
+        /* font-size: 1.3rem;  */
+    }
+
+    .txt-h2weekly {
+        /* font-size: 2rem;  */
+    }
+
+    .mdtweekly {
+        /* font-size: 1rem;  */
+    }
+}
+@media screen and (max-width: 1000px){
+    #weeklymailover{
+        width: 80vw;
+        /* font-size: 2rem; */
+    }
+    .weeklyemail{
+        padding-left: 6vw;
+    }
+
+}
+@media screen and (max-width: 795px) {
+    .w-img {
+        
+        height: 40vw;
+        width: 80vw;
+    }
+
+    .wfv {
+        position: relative;
+        top: 36vw;
+        left: 76vw;
+        height: 7vw;
+        width: 7vw;
+    }
+}
+
+@media screen and (max-width: 640px) {
+   
+    .wfv {
+       
+        display: none !important;
+        
+    }
+    .itemweekly{
+        margin: 0;
+        margin-left: 15px;
+        margin-right: 15px;
+    }
+    
+    .btns {
+        height: fit-content;
+    }
+
+    .weeklysignupmail{
+        height: 70px !important;
+    }
+
+    .fancy-txtweekly {
+        /* font-size: 1rem;  */
+        border-bottom: 4px solid white;
+    }
+
+    .txt-h2weekly {
+        /* font-size: 2rem;  */
+    }
+
+    .mdtweekly {
+        /* font-size: 1rem;  */
+    }
+
+   
+    .itemweekly {
+        padding: 5vh 1vw 5vh 1vw;
+    }
+
+    #weeklymailover {
+        width: 80vw !important;
+    }
+}
+@media screen and (max-width:370px) {
+    .learnmoreweekly{
+        height: 50px !important;
+    }
+    .signupweekly{
+        height: 50px !important;
+
+    }
+    
+}

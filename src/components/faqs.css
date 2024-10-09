@@ -1,0 +1,101 @@
+.faqs {
+    height: fit-content;
+    width: 100vw;
+    /* background-image: url('./Resource/aa890aa8e363918f0c0a94e60eee432c.jpg'); */
+    background-color: white;
+    background-position: center;
+    background-size: cover;
+    position: relative;
+}
+
+.bgimg {
+    height: 20vw;
+    width: 20vw;
+    position: absolute;
+    /* background-image: url('./Resource/gb.png'); */
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+.fancyfaq {
+    border-bottom: 4px solid #73806580;
+    display: inline-block;
+    /* font-size: 1.5rem; */
+    margin-bottom: 2vh;
+    /* font-weight: 400; */
+    margin-bottom: 2vh;
+}
+
+.txt-1faq {
+    /* font-size: 2.7rem; */
+/* font-weight: 400; */
+margin-bottom: 3vh;
+}
+
+.mdtfaq {
+    /* font-size: 1.1rem; */
+    /* font-weight: 100; */
+    margin-bottom: 5vh;
+    width: 47vw;
+    padding: 0 10px;
+    text-align: center;
+}
+
+.inside {
+    height: inherit;
+    width: inherit;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-left: 12.5vw;
+    padding-right: 12.5vw;
+    padding-top: 12rem;
+    padding-bottom: 8rem;
+    box-sizing: border-box;
+    background-color: rgba(255, 255, 255, 0.95);
+}
+
+@media screen and (max-width: 450px) {
+    .inside {
+        padding-top: 8vh;
+    }
+    .fancyfaq {
+        /* font-size: 25px !important;  */
+    }
+    .txt-1faq {
+        /* font-size: 35px !important;  */
+        text-align: center;
+    }
+    .mdtfaq {
+        /* font-size: 22px !important;  */
+        /* font-weight: 100 !important; */
+        width: fit-content;
+    }
+}
+
+@media screen and (max-width: 850px) {
+    .fancyfaq {
+        /* font-size: calc(35px * (850 / 1920));  */
+    }
+    .txt-1faq {
+        /* font-size: calc(65px * (850 / 1920));  */
+        /* font-weight: 400; */
+    }
+    .mdtfaq {
+        /* font-size: calc(22px * (850 / 1920));  */
+        /* font-weight: 100 !important; */
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .fancyfaq {
+        /* font-size: calc(35px * (600 / 1920));  */
+    }
+    .txt-1faq {
+        /* font-size: calc(65px * (600 / 1920));  */
+    }
+    .mdtfaq {
+        /* font-size: calc(22px * (600 / 1920));  */
+    }
+}

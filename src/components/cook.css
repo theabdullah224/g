@@ -1,0 +1,182 @@
+.cook {
+    height: fit-content;
+    width: 100vw;
+    display: flex;
+    align-items: center;
+    padding-left: 12.5vw;
+    padding-right: 12.5vw;
+    /* padding-top: 22rem;
+    padding-bottom: 20rem; */
+    position: relative;
+    box-sizing: border-box;
+}
+
+.left-contentcook {
+    width: fit-content;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-image: url('./Resource/gb.png');
+    background-size: 50%;
+    background-position: center;
+    background-repeat: no-repeat;
+    position: relative;
+}
+
+.gb {
+    position: absolute;
+    z-index: -1;
+    opacity: 1;
+    top: 132vh;
+    left: 15vw;
+}
+
+.image-sidecook {
+    width: fit-content;
+    position: relative;
+    right: -3.6vw;
+}
+
+.contentcook {
+    height: fit-content;
+    width: 34.984375vw;
+}
+
+.fancycook {
+    /* border-bottom: 4px solid #73806580; */
+    display: inline-block;
+    /* font-size: 1.5rem;  */
+    margin-bottom: 2vh;
+    
+}
+
+.txt-1cook {
+    text-wrap:balance ;
+    /* font-size: 2.7rem;  */
+    /* font-weight: 400; */
+    margin-bottom: 3vh;
+}
+
+.p-txtcook {
+    /* font-size: 1.2rem; */
+    text-wrap:balance ;
+    /* font-weight: 100; */
+     
+}
+
+.image-sidecook {
+    display: flex;
+    align-items: right;
+    justify-content: center;
+}
+
+.imgcook {
+    height: 34.79vw;
+    width: 36.35vw;
+    background-image: url('./Resource/couple-teamwork-kitchen.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    border-radius: 25px;
+    box-shadow: -15px 15px 0px #738065;
+}
+
+.faviconcook {
+    height: 7.81vw;
+    width: 7.81vw;
+    position: relative;
+    top: -4vw;
+    left: 32vw;
+}
+
+
+@media screen and (max-width: 1300px){
+    .imgcook {
+        height: 38.79vw;
+        width: 40.35vw;
+} 
+.faviconcook {
+    
+    top: -3vw;
+    left: 34vw;
+  
+}
+    
+}
+@media screen and (max-width: 900px) {
+    .imgcook {
+        height: 38.79vw;
+        width: 40.35vw;
+    }
+    .faviconcook {
+        left: 35vw;
+    }
+}
+
+@media screen and (max-width: 850px) {
+    .fancycook {
+        /* font-size: calc(30px * (850 / 1920));  */
+    }
+    .txt-1cook {
+        /* font-size: calc(50px * (850 / 1920));  */
+    }
+    .p-txtcook {
+        /* font-size: calc(22px * (850 / 1920));  */
+    }
+}
+
+@media screen and (max-width: 640px) {
+    .cook {
+        flex-direction: column;
+        width: 100vw;
+        height: fit-content;
+        padding-left: 16px;
+        padding-top: 5vh;
+    }
+
+    .left-contentcook {
+        width: 100vw;
+        height: fit-content;
+    }
+
+    .image-sidecook {
+        width: 100vw;
+        height: fit-content;
+        padding-top: 20px;
+    }
+
+    .contentcook {
+        padding: 0 5vw 0 10vw;
+        width: 100vw;
+    }
+
+    .fancycook {
+        /* font-size: 25px;  */
+        margin-bottom: 4vh;
+    }
+
+    .txt-1cook {
+        /* font-size: 35px;  */
+        margin-bottom: 4vh;
+    }
+
+    .p-txtcook {
+        /* font-size: 22px;  */
+        margin-bottom: 4vh;
+    }
+
+    .imgcook {
+        position: relative;
+        height: 80vw;
+        width: 85vw;
+        box-shadow: -8px 8px 0px #738065;
+        margin-top: 10vw;
+    }
+
+    .faviconcook {
+        height: 20vw;
+        width: 20vw;
+        top: -7vw;
+        left: 70vw;
+    }
+}

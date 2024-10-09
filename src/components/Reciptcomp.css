@@ -1,0 +1,39 @@
+
+
+.Reciptcomp{
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    margin-bottom: 5vh;
+}
+.righttext{
+    margin-left: 1vw;
+}
+.riconrec{
+    /* width: 600px !important; */
+    /* border: 2px solid red; */
+}
+
+.lefticonrec{
+    position: relative;
+    top: -2.4vh;
+    /* height: 60px; */
+    /* width: 600px; */
+}
+.rh3recipt{
+    /* font-size: 30px; */
+    /* font-weight: 400; */
+    margin-bottom: 1.5vh;
+}
+.rprecipt{
+    /* font-size: 22px; */
+    /* font-weight: 400; */
+}
+@media screen and (max-width:450px) {
+    .rh3recipt{
+        /* font-size: 26px; */
+    }
+    .rprecipt{
+        /* font-size: 20px; */
+    }
+}

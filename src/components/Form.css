@@ -1,0 +1,38 @@
+
+
+.form{
+    height: fit-content;
+    width: 100vw;
+    display: flex;
+    align-items: center;
+    /* justify-content: center; */
+    flex-direction: column;
+    background-color: #fcfcfc;
+    padding: 5vw 1vw;
+    box-sizing: border-box;
+}
+.fancyform{
+    border-bottom: 4px solid #73806580;
+display: inline-block;
+/* font-size: 1.5rem; */
+margin-bottom: 2vh;
+/* font-weight: 400; */
+
+}
+.h2form{
+    /* font-size: 2.7rem; */
+/* font-weight: 400; */
+margin-bottom: 3vh;
+    text-align: center;
+}
+@media screen and (max-width:570px) {
+    .form{
+        height:fit-content;
+        width: 100vw;
+        border-radius: 40px;
+    }
+   
+}
+.form {
+    scroll-margin-top: 100px; /* Adjust this value based on your header height */
+  }

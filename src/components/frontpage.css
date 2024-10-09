@@ -1,0 +1,153 @@
+.frontpage {
+  height: 100vh;
+  width: 100vw;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  position: relative;
+
+}
+
+.colorpage {
+  height: inherit;
+  width: inherit;
+ background-color: rgba(22, 22, 22, 0.60);
+  color: white;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  padding: 12vh 12.5vw;
+  box-sizing: border-box;
+  backdrop-filter: blur(3px);
+}
+
+.fitems {
+  position: relative;
+}
+
+.fronth1 {
+  /* font-size: 4.2rem !important; */
+  /* font-weight: 400 !important; */
+  margin-bottom: 3vh;
+  /* width: 20vw; */
+  /* border:2px solid red; */
+}
+
+.fitemsp {
+    /* font-size: 1.3rem !important; */
+    margin-bottom: 2vh;
+    /* font-weight: 100 !important; */
+  width: 33vw;
+}
+
+.faviconfitem {
+  position: absolute;
+  left: -5.6vw;
+  top: -8vw;
+  width: calc(80px + (150 - 80) * ((100vw - 450px) / (1920 - 450)));
+  max-width: 150px;
+  min-width: 80px;
+}
+
+.btnsff {
+  display: flex;
+  gap: 1vw;
+  margin-top: 5vh;
+}
+
+.learnmorefront {
+    background-color:#738065 ;
+    color: white;
+    border: 2px solid #738065;
+    width: -moz-fit-content;
+    width: fit-content;
+    height: -moz-fit-content;
+    height: fit-content;
+    /* font-size: 1.1rem; */
+    padding: 16px 38px;
+}
+
+.signupfront {
+    background-color: transparent;
+    color: white;
+    border: 2px solid #738065;
+    width: -moz-fit-content;
+    width: fit-content;
+    height: -moz-fit-content;
+    height: fit-content;
+    /* font-size: 1.1rem; */
+    padding: 16px 38px;
+}
+
+@media screen and (min-width: 2000px) {
+  .faviconfitem {
+    left: -4vw;
+    top: -7vw;
+  }
+}
+@media screen and (max-width: 1451px) {
+  .fronth1 {
+    width: fit-content;
+  }
+  .fitemsp {
+    width: fit-content;
+  }
+  .faviconfitem {
+    left: -5vw;
+    top: -9vw;
+  }
+}
+@media screen and (max-width: 1202px) {
+  .faviconfitem {
+    left: -5vw;
+    top: -10vw;
+  }
+}
+@media screen and (max-width: 938px) {
+  .faviconfitem {
+    left: -5vw;
+    top: -12vw;
+  }
+}
+@media screen and (max-width: 692px) {
+  .faviconfitem {
+    left: -5vw;
+    top: -14vw;
+  }
+}
+@media screen and (max-width: 533px) {
+  .faviconfitem {
+    left: -5vw;
+    top: -16vw;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .frontpage {
+    height: fit-content;
+  }
+}
+
+@media screen and (max-width: 450px) {
+  .frontpage {
+    height: 688px;
+  }
+  .fronth1 {
+    /* font-size: 55px !important;  */
+  }
+  .fitemsp {
+    /* font-size: 26px;  */
+  }
+  .faviconfitem {
+    top: -23vw;
+  }
+}
+
+@media screen and (min-width: 451px) {
+  .fronth1 {
+    /* font-size: 55px;  */
+  }
+  .fitemsp {
+    /* font-size: 26px;  */
+  }
+}

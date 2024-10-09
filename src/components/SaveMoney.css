@@ -1,0 +1,364 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    overflow-x: hidden;
+}
+
+.savemoney {
+    height: fit-content;
+    width: 100vw;
+    display: flex;
+    align-items: center;
+    padding: 12vh 12.5vw;
+    padding-bottom: 10rem;
+    padding-top: 10rem;
+    position: relative;
+    flex-direction: row-reverse;
+    box-sizing: border-box;
+}
+
+.contentsave {
+    padding: 0;
+}
+
+.left-content-2 {
+    width: 35.52vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-image: url('./Resource/gb.png');
+    background-size: 50%;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.gb {
+    position: absolute;
+    z-index: -1;
+    opacity: 1;
+    top: 132vh;
+    left: 15vw;
+}
+
+.image-sidesavemoney {
+    width: fit-content;
+    position: relative;
+    right: -3.6vw;
+}
+
+.fancysavemoney {
+    border-bottom: 4px solid #73806580;
+    display: inline-block;
+    /* font-size: 1.5rem;  */
+    margin-bottom: 2vh;
+    /* font-weight: 400; */
+}
+
+.txt-1savemoney {
+    /* font-size: 2.7rem;  */
+    /* font-weight: 400; */
+    margin-bottom: 3vh;
+}
+
+.p-txtsavemoney {
+    /* font-size: 1.1rem;  */
+    margin-bottom: 2vh;
+    /* font-weight: 100; */
+}
+
+.fancy1leftsavemoney {
+    /* font-weight: 400; */
+    /* font-size: 1.8rem;  */
+}
+
+.p-txtbottom {
+    /* font-size: 1.1rem;  */
+    
+    text-wrap: balance;
+    /* font-weight: 100; */
+    
+}
+
+.image-sidesavemoney {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.img-2savemoney {
+    height: 34.79vw;
+    width: 36.35vw;
+    position: relative;
+    transform: scaleX(-1);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    border-radius: 25px;
+    box-shadow: -15px 15px 0px #738065;
+}
+
+.favicon-2 {
+    height: 7.81vw;
+    width: 7.81vw;
+    position: relative;
+    top: -4vw;
+    left: 32vw;
+    transform: scaleX(-1);
+}
+
+.leftsave .fancysavemoney {
+    border: none;
+    /* font-weight: 500; */
+}
+
+.mainsave {
+    /* margin-top: 4vh; */
+    display: flex;
+}
+
+.btns {
+    margin-top: 40px;
+    display: flex;
+    align-items: center;
+    gap: 1vw;
+}
+
+.learnmoresavemoney {
+    width: fit-content;
+    height: fit-content;
+    /* font-size: 1.1rem; */
+  padding: 16px 40px ;
+}
+
+.signupsavemoney {
+    background-color: white;
+    color: #738065;
+    border: 2px solid #738065;
+    width: fit-content;
+    height: fit-content;
+    /* font-size: 1.1rem; */
+  padding: 14px 38px ;
+}
+
+.signupsavemoney:hover {
+    background-color: #738065;
+    color: white;
+}
+
+@media screen and (max-width: 1500px) {
+    .img-2savemoney {
+        height: 36.79vw;
+        width: 38.35vw;
+    }
+    .favicon-2 {
+        top: -3.5vw;
+        left: 32vw;
+    }
+}
+
+@media screen and (max-width: 1300px) {
+    .img-2savemoney {
+        height: 38.79vw;
+        width: 40.35vw;
+    }
+    .favicon-2 {
+        top: -4vw;
+        left: 34vw;
+    }
+}
+
+@media screen and (max-width: 900px) {
+    .img-2savemoney {
+        height: 38.79vw;
+        width: 40.35vw;
+    }
+
+    .favicon-2 {
+        left: 35vw;
+    }
+
+    .learnmoresavemoney {
+        /* font-size: 1rem; */
+        height: 50px !important;
+    }
+
+    .signupsavemoney {
+        /* font-size: 1rem; */
+        height: 50px;
+    }
+}
+
+@media screen and (max-width: 850px) {
+    .fancysavemoney {
+        /* font-size: calc(30px * (850 / 1920));  */
+    }
+
+    .txt-1savemoney {
+        /* font-size: calc(50px * (850 / 1920)); */
+    }
+
+    .p-txtsavemoney {
+        /* font-size: calc(22px * (850 / 1920)); */
+    }
+    .p-txtbottom{
+        /* font-size: calc(22px * (850 / 1920)); */
+    }
+    
+    .fancy1leftsavemoney {
+        /* font-size: calc(33px * (850 / 1920));  */
+    }
+}
+@media screen and (max-width:650px) {
+    .learnmoresavemoney{
+        /* font-size: 1.1rem; */
+        padding: 10px 15px ;
+    }
+    .signupsavemoney{
+        /* font-size: 1.1rem; */
+        padding: 10px 15px ;
+
+    }
+    
+}
+@media screen and (max-width: 600px) {
+    .left-content-2 {
+        padding-left: 10px;
+    }
+
+    .learnmoresavemoney {
+        width: 200px;
+        /* font-size: .9rem; */
+        height: 40px !important;
+    }
+
+    .signupsavemoney {
+        width: 150px;
+        height: 40px;
+        /* font-size: .9rem; */
+    }
+    .fancy1leftsavemoney {
+        /* font-size: calc(33px * (850 / 1920));  */
+    }
+}
+@media screen and (max-width: 500px){
+.learnmoresavemoney {
+        width: 200px;
+        /* font-size: .9rem; */
+        height: 30px !important;
+    }
+
+    .signupsavemoney {
+        width: 150px;
+        height: 30px;
+        /* font-size: .9rem; */
+    }
+}
+@media screen and (max-width: 640px) {
+    .savemoney {
+        flex-direction: column;
+        width: 100vw;
+        padding: 2vh 6vw 7vh 6vw;
+        height: fit-content;
+    }
+    .left-content-2{
+        padding: 0;
+    }
+    .contentsave{
+        /* padding: 0px 26px 0px 26px !important; */
+    }
+    .mainsave{
+        
+        
+    }
+    .btns{
+        
+
+    }
+    .left-content-2 {
+        padding: 0 5vw 0 5vw;
+        width: 100vw;
+        height: fit-content;
+        padding-top: 1vh;
+    }
+
+    .image-sidesavemoney {
+        height: fit-content;
+        width: fit-content;
+        margin: 0;
+        left: 7vw;
+        padding-top: 20px;
+        box-sizing: border-box;
+    }
+
+    .content {
+        padding: 0;
+    }
+
+    .fancysavemoney {
+        /* font-size: 25px;  */
+        margin-bottom: 4vh;
+    }
+
+    .txt-1savemoney {
+        /* font-size: 35px;  */
+        margin-bottom: 4vh;
+    }
+
+    .p-txtsavemoney {
+        /* font-size: 22px;  */
+        margin-bottom: 4vh;
+    }
+
+    .fancy1leftsavemoney {
+        /* font-size: 33px;  */
+    }
+
+    .p-txtbottom {
+        /* font-size: 22px;  */
+    }
+
+    .img-2savemoney {
+        height: 80vw;
+        width: 85vw;
+        box-shadow: -8px 8px 0px #738065;
+        margin-top: 10vw;
+    }
+
+    .favicon-2 {
+        height: 20vw;
+        width: 20vw;
+        top: -7vw;
+        left: 70vw;
+    }
+
+    .btns {
+        align-items: center;
+        justify-content: space-around;
+        
+    }
+
+    .signupsavemoney {
+        background-color: white;
+        color: #738065;
+        border: 2px solid #738065;
+        width: fit-content;
+        height: fit-content;
+        /* font-size: 1.1rem; */
+      padding: 14px 38px ;
+    }
+
+    .learnmoresavemoney {
+        background-color: #738065;
+        
+        color: white;
+        border: 2px solid #738065;
+        width: fit-content;
+        height: fit-content !important;
+        /* font-size: 1.1rem; */
+        padding: 14px 38px ;
+    }
+}

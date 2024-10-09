@@ -1,0 +1,247 @@
+.DiscoverBenifits {
+    height: fit-content;
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+   padding-left: 12.5vw;
+   padding-right: 12.5vw;
+
+    box-sizing: border-box;
+    /* background-image: url('./Resource//gb.png'); */
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 30%;
+    position: relative;
+}
+
+.DiscoverBenifits .favicondiscover {
+    position: absolute;
+    top: 50%;
+    /* left: 50%; */
+    right: 0;
+    /* transform: translate(-50%, -50%); */
+    height: 120px;
+    width: 120px;
+    -webkit-transform: translate(-50%, -50%);
+    -moz-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    -o-transform: translate(-50%, -50%);
+}
+
+
+.fancydiscover {
+    border-bottom: 4px solid #738065;
+    display: inline-block;
+    /* font-size: 1.3rem;  */
+    margin-bottom: 2vh;
+    /* font-weight: 400; */
+}
+
+.dh2discover {
+    /* font-size: 2.7rem;  */
+    text-align: center;
+    /* font-weight: 400; */
+    margin-bottom: 3vh;
+}
+
+.dpdiscover {
+    /* font-size: 1.3rem;  */
+    text-align: center;
+    width: 50vw;
+    /* font-weight: 100; */
+}
+
+.dbtns {
+    display: flex;
+    gap: 2vw;
+    margin-top: 5vh;
+    align-items: center;
+}
+
+.learnmorediscover {
+    width: fit-content;
+    height: fit-content;
+    /* font-size: 1.1rem; */
+  padding: 16px 40px ;
+}
+
+.signupdescover {
+    background-color: white;
+    color: #738065;
+    border: 2px solid #738065;
+    width: fit-content;
+    height: fit-content;
+    /* font-size: 1.1rem; */
+  padding: 14px 38px ;
+}
+.signupdescover:hover{
+    color: white;
+}
+.cols {
+    height: fit-content;
+    width: fit-content;
+    display: flex;
+    gap: 1rem;
+    margin-top: 7vh;
+}
+
+.col1 {
+    height: 333px; 
+    width: 406px;
+    background-color: #f6f7f5;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    
+    padding: 2rem;
+    box-sizing: border-box;
+    border-radius: 20px;
+    margin: 10px;
+}
+
+.col1 img {
+    width: 70px;
+    
+    margin-bottom: 2vh;
+}
+
+.insidecol1 {
+    /* font-size: 1.5rem;  */
+    margin-bottom: 2vh;
+    /* font-weight: 400; */
+}
+
+.pcol1 {
+    /* font-size: 1.1rem; */
+    /* font-weight: 100; */
+}
+
+@media screen and (max-width: 1450px){
+    .DiscoverBenifits  .favicondiscover{
+        left: 84vw;
+        top: 12vh;
+    }
+}
+@media screen and (max-width: 1000px) {
+    .DiscoverBenifits  .favicondiscover{
+        height: 10vw;
+        width: 10vw;
+    }
+    .pcol1 {
+        /* font-size: 22px;  */
+    }
+
+    .insidecol1 {
+        /* font-size: 30px;  */
+    }
+}
+@media screen and (max-width: 700px){
+    .DiscoverBenifits  .favicondiscover{
+        left: 84vw;
+        top: 20vh;
+        height: 12vw;
+        width: 12vw;
+    }
+
+}
+@media screen and (max-width: 500px){
+    .DiscoverBenifits  .favicondiscover{
+        left: 84vw;
+        top: 20vh;
+        height: 12vw;
+        width: 12vw;
+    }
+
+}
+@media screen and (max-width: 450px) {
+    .DiscoverBenifits {
+        /* padding-top: 25vw; */
+    }
+
+    .fancydiscover {
+        border-bottom: 1.6vw solid #738065;
+        /* font-size: 25px;  */
+        margin-bottom: 4vh;
+        text-align: center;
+    }
+
+    .dh2discover {
+        /* font-size: 35px;  */
+        margin-bottom: 4vh;
+        text-align: center;
+    }
+
+    .dpdiscover {
+        /* font-size: 22px;  */
+        margin-bottom: 4vh;
+        text-align: center;
+    }
+
+    
+
+    .cols {
+        flex-direction: column;
+    }
+
+    .col1 {
+        margin: 0;
+        width: 90vw; 
+        height: 90vw; 
+        padding: 10vw;
+        box-sizing: border-box;
+    }
+
+    .col1 img {
+        width: 10vw;
+        margin: 0;
+        margin-bottom: 3vw;
+    }
+
+    .insidecol1 {
+        /* font-size: 30px;  */
+        margin-bottom: 3vw;
+    }
+
+    .pcol1 {
+        /* font-size: 22px;  */
+    }
+
+    .DiscoverBenifits .favicondiscover {
+        display: none;
+    }
+
+    .dbtns button {
+        width: 30vw;
+        /* font-size: 1rem; */
+    }
+}
+@media screen and (max-width: 390px){
+    .DiscoverBenifits{
+        /* padding-top: 220px; */
+    }
+
+}
+@media screen and (max-width:370px) {
+    .learnmorediscover{
+        height: 50px !important;
+    }
+    .signupdescover{
+        height: 50px !important;
+
+    }
+    
+}
+@media screen and (max-width: 350px) {
+    .DiscoverBenifits {
+        /* padding-top: 200px; */
+    }
+}
+@media screen and (max-width: 320px) {
+    .DiscoverBenifits {
+        /* padding-top: 250px; */
+    }
+}

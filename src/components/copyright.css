@@ -1,0 +1,28 @@
+
+
+
+.copyright{
+    height: fit-content;
+    padding: 1vw 1vw;
+    color: white;
+    
+    width: 100vw;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    text-align: center;
+    flex-wrap: wrap;
+    background-color: #738065;
+}
+.cpp{
+    /* font-size: 1.1rem; */
+    /* font-weight: 100; */
+}
+.canchor{
+    /* font-size: 1.1rem; */
+    /* font-weight: 100; */
+    padding-left: 3vw;
+    box-sizing: border-box;
+    color: white;
+    text-decoration: none;
+}
