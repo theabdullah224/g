@@ -4,7 +4,7 @@ import React, { useState, useLayoutEffect } from 'react';
 // Importing images for the left and right arrow buttons and the slides
 import leftarrow from './Resource/leftarrow.svg';
 import rightarrow from './Resource/rightarrow.svg';
-import slide1 from './Resource/without img 1.png';
+import slide1 from './Resource/adjusted without img 1.png';
 import slide2 from './Resource/without img 2.png';
 import slide3 from './Resource/without img 3.png';
 import slide4 from './Resource/without img 4.png';
