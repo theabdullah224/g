@@ -370,7 +370,7 @@ const Welcome = ({ closePopup }) => {
   
     alert("You will receive an email with the PDFs in few mins.")
     navigate('/myaccount')
-    window.location.reload(true)
+    window.location.reload()
     await generateAndSendPDF(parsedUser.email)
 
   };
