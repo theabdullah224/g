@@ -353,7 +353,7 @@ const generateAndSendPDF = async (email) => {
      
     }
     alert("PDF generated and sent successfully!");
-   
+     window.location.reload()
   } catch (error) {
    
   }
@@ -370,7 +370,7 @@ const Welcome = ({ closePopup }) => {
   
     alert("You will receive an email with the PDFs in few mins.")
     navigate('/myaccount')
-    window.location.reload()
+    
     await generateAndSendPDF(parsedUser.email)
 
   };
