@@ -35,7 +35,7 @@ import arrow from "./Resource/arrow.svg";
 import Loader from "./Resource/spinner.svg";
 import useStore from "./Store";
 
-import { jwtDecode } from "jwt-decode";
+import jwtDecode from 'jwt-decode';
 
 const parseMealPlanData = (mealPlan) => {
   if (typeof mealPlan !== "string" || mealPlan.trim() === "") {
