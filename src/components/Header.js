@@ -151,7 +151,7 @@ function Header() {
             </svg>
           </button>
           <ul className="mt-8 flex flex-col gap-4 font-roboto font-bold items-start text-base">
-            {["Home", !isLoggedIn && "Try Free for 30-Days",  "My Account","About Us"].filter(Boolean).map(
+            {["Home", !isLoggedIn && "Try Free for 30-Days",  isLoggedIn?  "My Account" : "Log In","About Us"].filter(Boolean).map(
               (item) => (
                 <li key={item}>
                   <NavLink
