@@ -143,24 +143,6 @@ const cards = [
       {
         type: "radio",
         name: "dietaryRestrictions",
-        label: "Low carb",
-        image: lowcarb,
-        info: `<div style="padding:10px; width:14rem;"><b>Low-Carb Diet - Benefits:</b>
-  <ul style="list-style-type: disc; margin-left: 20px;">
-    <li>May improve metabolic health by reducing insulin levels, helping the body burn fat more efficiently.</li>
-    <li>Often leads to improvements in significant cardiovascular risk factors, such as decreasing triglycerides and increasing HDL cholesterol levels.</li>
-    <li>Beneficial for managing diabetes and reducing insulin resistance.</li>
-  </ul><br>
-  <b>Diet Considerations:</b>
-        <ul style="list-style-type: disc; margin-left: 20px;">
-            <li>Some individuals might experience a temporary decrease in energy as the body adjusts to fewer carbohydrates.</li>
-            <li>Ensures sufficient intake of essential nutrients through carefully selected low-carb vegetables and foods.</li>
-        </ul></div>
-  `,
-      },
-      {
-        type: "radio",
-        name: "dietaryRestrictions",
         label: "Balanced diet",
         image: balancediet,
         info: `<div style="padding:10px; width:14rem;"><b>Vegetarian Diet</b>
@@ -177,6 +159,25 @@ const cards = [
             <li>Some vegetarian diets can be high in carbohydrates, which might not suit everyone's health goals.</li>
         </ul></div>`,
       },
+      {
+        type: "radio",
+        name: "dietaryRestrictions",
+        label: "Low carb",
+        image: lowcarb,
+        info: `<div style="padding:10px; width:14rem;"><b>Low-Carb Diet - Benefits:</b>
+  <ul style="list-style-type: disc; margin-left: 20px;">
+    <li>May improve metabolic health by reducing insulin levels, helping the body burn fat more efficiently.</li>
+    <li>Often leads to improvements in significant cardiovascular risk factors, such as decreasing triglycerides and increasing HDL cholesterol levels.</li>
+    <li>Beneficial for managing diabetes and reducing insulin resistance.</li>
+  </ul><br>
+  <b>Diet Considerations:</b>
+        <ul style="list-style-type: disc; margin-left: 20px;">
+            <li>Some individuals might experience a temporary decrease in energy as the body adjusts to fewer carbohydrates.</li>
+            <li>Ensures sufficient intake of essential nutrients through carefully selected low-carb vegetables and foods.</li>
+        </ul></div>
+  `,
+      },
+     
       {
         type: "radio",
         name: "dietaryRestrictions",
@@ -1376,6 +1377,23 @@ const CardNavigator = ({ setLoading }) => {
 
           {/* ---------------popup info */}
           {cards[0].elements[0].label === dietrypopup && (
+            <div
+            ref={popupRef}
+             class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-50 backdrop-blur-xl rounded-md select-none max-w-[20rem] w-full max-h-[20rem] h-full overflow-y-scroll p-2 text-white scroll-smooth">
+
+              <div className="p-2">
+              <b className="mb-4">Balanced Diet:</b>
+              <ul className="list-disc ml-5">
+                <li>A balanced diet inspired by Mediterranean and centenarian eating habits significantly enhances health. </li>
+                <li>Such a diet focuses on a variety of fruits, vegetables, and whole grains, which naturally helps reduce cholesterol levels and lower the risk of chronic conditions.</li>
+                <li> It's a sustainable, fulfilling way to eat that not only extends your lifespan but also respects the natural environment.</li>
+              </ul>
+              </div>
+             
+          </div>
+          
+          )}
+          {cards[0].elements[1].label === dietrypopup && (
             <div
               ref={popupRef}
               className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-50 backdrop-blur-xl rounded-md select-none max-w-[20rem] w-full max-h-[20rem] h-full overflow-y-scroll p-2 text-white scroll-smooth"

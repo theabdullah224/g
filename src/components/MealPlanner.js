@@ -151,7 +151,7 @@ function MealPlanner(props) {
         ans5=""
         />
         </div>
-    <Testimonials
+    {/* <Testimonials
     logo={testilogo}
     description="The meal planner has been a game-changer for me. It's made meal planning so much easier and has introduced me to new delicious recipes."
     h2="John Doe"
@@ -161,8 +161,8 @@ function MealPlanner(props) {
     bgsize="40%"
     testcolor="transparent"
     
-    />
-    <div className='mb-[9rem]'></div>
+    /> */}
+    {/* <div className='mb-[9rem]'></div> */}
     <Cta
       title="Contact us"
       description="Have more questions? Get in touch with us."

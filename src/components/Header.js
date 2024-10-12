@@ -59,7 +59,7 @@ function Header() {
         <div className="hidden lg:flex items-center ">
           
         <ul className="flex gap-8 font-roboto font-bold items-center text-md ">
-  {["Home", !isLoggedIn && "Try Free for 30-Days", "My Account", "About Us"]
+  {["Home", !isLoggedIn && "Try Free for 30-Days", isLoggedIn?  "My Account" : "Log In", "About Us"]
     .filter(Boolean)
     .map((item) => (
       <li key={item}>

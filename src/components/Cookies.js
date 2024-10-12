@@ -91,10 +91,7 @@ const CookieManager = () => {
         <p className="text-gray-600 mb-4">
           We use different types of cookies to optimize your experience on our website. You can consent to the use of such technologies by clicking on "Save Preferences". 
         </p>
-        <p className="text-gray-600">
-          For more detailed information about the cookies we use, please read our{' '}
-          <a href="/cookie-policy" className="text-blue-600 hover:underline">Cookie Policy</a>.
-        </p>
+       
       </div>
     </div>
     </>

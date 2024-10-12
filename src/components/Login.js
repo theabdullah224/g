@@ -77,7 +77,7 @@ function Login() {
 
     return (
         <div>
-            <Header />
+            {/* <Header /> */}
             <div
                 className="w-screen h-screen flex flex-col items-center justify-center p-6"
                 style={{

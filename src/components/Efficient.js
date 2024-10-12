@@ -96,7 +96,7 @@ const PricingCard = () => {
                 <div className="mt-5 flex justify-center text-black">
                   <div className="text-6xl font-medium">6.99</div>
                   <div className="ml-2 flex flex-col">
-                    <p className="text-lg font-bold">£</p>
+                    <p className="text-lg font-bold">&#8203;</p>
                     <p>per Month</p>
                   </div>
                 </div>
@@ -121,7 +121,7 @@ const PricingCard = () => {
                     onClick={() => buyFunction("pro")}
                     className="w-full py-2 px-4 rounded-lg flex items-center justify-center bg-P-Green1 text-white shadow-[inset_4px_4px_8px_#2a322179] hover:shadow-[inset_0px_0px_0px_#2A3221] font-roboto font-medium text-base"
                   >
-                    {isLoggedIn ? "Upgrade":"Sign Up"}
+                    {isLoggedIn ? "Upgrade":"Start After 30 Days"}
                     
                   </button>
                 </div>
@@ -134,7 +134,7 @@ const PricingCard = () => {
                 <div className="mt-5 flex justify-center text-black">
                   <div className="text-6xl font-medium">69</div>
                   <div className="ml-2 flex flex-col">
-                    <p className="text-lg font-bold">£</p>
+                    <p className="text-lg font-bold">&#8203;</p>
                     <p>per Year</p>
                   </div>
                 </div>
@@ -159,7 +159,7 @@ const PricingCard = () => {
                     onClick={() => buyFunction("ultra_pro")}
                     className="w-full py-2 px-4 rounded-lg flex items-center justify-center bg-P-Green1 text-white shadow-[inset_4px_4px_8px_#2a322179] hover:shadow-[inset_0px_0px_0px_#2A3221] font-roboto font-medium text-base"
                   >
-                    {isLoggedIn ? "Upgrade":"Sign Up"}
+                    {isLoggedIn ? "Upgrade":"Start After 30 Days"}
                   </button>
                 </div>
               </div>
