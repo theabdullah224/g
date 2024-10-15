@@ -1,6 +1,6 @@
 // Importing necessary tools and components from React and other libraries
 import React, { useState,useEffect } from 'react';
-import { BrowserRouter as Router, Routes, Route, useLocation,Navigate } from "react-router-dom"; // Tools for handling navigation (moving between different pages)
+import { BrowserRouter as Router, Routes, Route, useLocation } from "react-router-dom"; // Tools for handling navigation (moving between different pages)
 import { CSSTransition, TransitionGroup } from 'react-transition-group'; // Tools for adding animations when navigating between pages
 import Sec1 from "./components/Sec1"; // Importing the Sec1 page
 import Mealplanner from './components/MealPlanner'; // Importing the MealPlanner page
@@ -80,10 +80,7 @@ function App() {
             <Route path="/OurStory" element={<OurStory/>} /> 
             <Route path="/cookiesetting" element={<Cookies/>} /> 
             <Route path="/welcome" element={<Welcome/>} /> 
-            {isLoggedIn && (
-
-<Route path="/login" element={<Navigate to="/" />} />
-            )}
+            <Route path="/login" element={<Login/>} /> 
             { isLoggedIn && (
               <>
             <Route path="/deleteaccount" element={<Delete/>} /> 
