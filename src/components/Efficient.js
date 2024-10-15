@@ -5,10 +5,16 @@ import useStore from "./Store";
 import { useNavigate } from "react-router-dom";
 const PricingCard = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [email, setemail] = useState("")
   useEffect(() => {
+    
     // Check localStorage for the "user" object
     const user = localStorage.getItem("user");
+    console.log(user)
     if (user) {
+      const parsedUser = JSON.parse(user);  // Parse the JSON string
+  const email = parsedUser.email;  // Access the email field
+    setemail(email)
       setIsLoggedIn(true); // Set logged-in state to true if a user is found
     } else {
       setIsLoggedIn(false); // Set logged-in state to false if no user is found
@@ -17,11 +23,13 @@ const PricingCard = () => {
   const [loader, setLoader] = useState(false);
   const navigate = useNavigate();
   // Subscription Function
+  
   const buyFunction = async (planType) => {
     setLoader(true);
     try {
       const response = await axios.post("https://meeel.xyz/payment", {
         planType,
+        email
       });
       if (response.status === 200) {
         if(isLoggedIn){

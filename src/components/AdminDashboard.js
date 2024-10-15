@@ -63,7 +63,7 @@ const AdminDashboard = () => {
 
     try {
       setMessage("Adding user...")
-      const response = await fetch('http://127.0.0.1:5000/adduser', {
+      const response = await fetch('https://meeel.xyz/adduser', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

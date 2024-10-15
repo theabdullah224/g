@@ -50,7 +50,7 @@ const UserManagement = () => {
 
   const deleteUser = async (email) => {
     try {
-      const response = await fetch(`http://127.0.0.1:5000/deleteuser/${email}`, {
+      const response = await fetch(`https://meeel.xyz/deleteuser/${email}`, {
         method: 'DELETE',
       });
       if (!response.ok) throw new Error('Failed to delete user');
