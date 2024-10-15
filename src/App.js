@@ -80,7 +80,7 @@ function App() {
             <Route path="/OurStory" element={<OurStory/>} /> 
             <Route path="/cookiesetting" element={<Cookies/>} /> 
             <Route path="/welcome" element={<Welcome/>} /> 
-            {!isLoggedIn && (
+            {isLoggedIn && (
 
 <Route path="/login" element={<Navigate to="/" />} />
             )}
