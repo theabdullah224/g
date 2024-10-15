@@ -1853,17 +1853,18 @@ const CardNavigator = ({ setLoading }) => {
             {currentCardIndex > 0 && currentCardIndex < 4 && (
               <>
                 <div className="flex flex-wrap gap-2 mt-4">
-                  <button
-                    className="py-2 px-10 select-none w-[100px] sm:w-[200px] box-border rounded-lg flex items-center justify-center bg-white text-P-Green1 shadow-[inset_4px_4px_8px_#2a322179] hover:shadow-[inset_0px_0px_0px_#2A3221] font-roboto font-medium text-base"
-                    onClick={handleNext}
-                  >
-                    Next
-                  </button>
+                  
                   <button
                     className="py-1 sm:py-2 px-4 sm:px-12 w-[100px] sm:w-[200px] select-none box-border rounded-lg flex items-center justify-center bg-transparent text-P-white border-2 border-white  hover:cursor-pointer text-white font-roboto font-medium text-base"
                     onClick={handleBack}
                   >
                     Back
+                  </button>
+                  <button
+                    className="py-2 px-10 select-none w-[100px] sm:w-[200px] box-border rounded-lg flex items-center justify-center bg-white text-P-Green1 shadow-[inset_4px_4px_8px_#2a322179] hover:shadow-[inset_0px_0px_0px_#2A3221] font-roboto font-medium text-base"
+                    onClick={handleNext}
+                  >
+                    Next
                   </button>
                 </div>
               </>
@@ -1889,17 +1890,18 @@ const CardNavigator = ({ setLoading }) => {
               ) : (
                 <>
                   <div className="flex flex-wrap gap-2 mt-4">
-                    <button
-                      className="py-2 px-10 select-none w-[100px] sm:w-[200px] box-border rounded-lg flex items-center justify-center bg-white text-P-Green1 shadow-[inset_4px_4px_8px_#2a322179] hover:shadow-[inset_0px_0px_0px_#2A3221] font-roboto font-medium text-base"
-                      onClick={handleNext}
-                    >
-                      Next
-                    </button>
+                    
                     <button
                       className="py-2 px-4 sm:px-12 select-none w-[100px] sm:w-[200px] box-border rounded-lg flex items-center justify-center bg-transparent text-P-white border-2 border-white hover:cursor-pointer text-white font-roboto font-medium text-base"
                       onClick={handleBack}
                     >
                       Back
+                    </button>
+                    <button
+                      className="py-2 px-10 select-none w-[100px] sm:w-[200px] box-border rounded-lg flex items-center justify-center bg-white text-P-Green1 shadow-[inset_4px_4px_8px_#2a322179] hover:shadow-[inset_0px_0px_0px_#2A3221] font-roboto font-medium text-base"
+                      onClick={handleNext}
+                    >
+                      Next
                     </button>
                   </div>
                 </>
@@ -1910,17 +1912,18 @@ const CardNavigator = ({ setLoading }) => {
                 <div className="flex flex-col flex-wrap mt-4 gap-2 ">
                   {eror && <p className="text-red-500 ">{eror}</p>}
                   <div className="flex gap-2 flex-wrap">
-                    <button
-                      className=" py-2 px-10 select-none w-[100px] sm:w-[200px] box-border rounded-lg flex items-center justify-center bg-white text-P-Green1 shadow-[inset_4px_4px_8px_#2a322179] hover:shadow-[inset_0px_0px_0px_#2A3221] font-roboto font-medium text-base"
-                      onClick={handleSignUp}
-                    >
-                      Sign&nbsp;Up
-                    </button>
+                   
                     <button
                       className="py-[1px] sm:py-2 px-4 sm:px-12 w-[100px] sm:w-[200px] select-none box-border rounded-lg flex items-center justify-center bg-transparent text-P-white border-2 border-white  hover:cursor-pointer text-white font-roboto font-medium text-base"
                       onClick={handleBack}
                     >
                       Back
+                    </button>
+                    <button
+                      className=" py-2 px-10 select-none w-[100px] sm:w-[200px] box-border rounded-lg flex items-center justify-center bg-white text-P-Green1 shadow-[inset_4px_4px_8px_#2a322179] hover:shadow-[inset_0px_0px_0px_#2A3221] font-roboto font-medium text-base"
+                      onClick={handleSignUp}
+                    >
+                      Sign&nbsp;Up
                     </button>
                   </div>
                   <div className="flex gap-2">

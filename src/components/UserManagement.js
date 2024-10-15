@@ -1,22 +1,30 @@
 import React, { useState, useEffect } from 'react';
-import { Search } from 'lucide-react';
+import { Search, Trash2 } from 'lucide-react';
 
-const UserCard = ({ user, expanded, onClick }) => (
+const UserCard = ({ user, expanded, onClick, onDelete }) => (
   <div 
-    className="bg-white p-4 rounded-lg shadow-md cursor-pointer hover:shadow-lg transition-shadow "
-    onClick={onClick}
+    className="bg-white p-4 rounded-lg shadow-md cursor-pointer hover:shadow-lg transition-shadow relative"
   >
-    <h3 className="text-lg font-semibold mb-2 text-wrap break-words ">{user.email}</h3>
+    <h3 className="text-lg font-semibold mb-2 text-wrap break-words" onClick={onClick}>{user.email}</h3>
     {expanded && (
-      <div className="mt-2 ">
+      <div className="mt-2">
         <p><strong>Name:</strong> {user.name}</p>
-        {/* <p><strong>Phone:</strong> {user.phone}</p> */}
-        {/* <p><strong>Subject:</strong> {user.subject}</p> */}
         <p><strong>Subscription Status:</strong> {user.subscription_status}</p>
         <p><strong>Subscription End Date:</strong> {user.subscription_end_date}</p>
         <p><strong>Free Plan Used:</strong> {user.free_plan_used ? 'Yes' : 'No'}</p>
       </div>
     )}
+    <button
+      className="absolute top-2 right-2 p-1 rounded-full hover:bg-red-100"
+      onClick={(e) => {
+        e.stopPropagation();
+        if (window.confirm('Are you sure you want to delete this user?')) {
+          onDelete(user.email);
+        }
+      }}
+    >
+      <Trash2 className="h-5 w-5 text-red-500" />
+    </button>
   </div>
 );
 
@@ -26,18 +34,31 @@ const UserManagement = () => {
   const [expandedUser, setExpandedUser] = useState(null);
 
   useEffect(() => {
-    const fetchUsers = async () => {
-      try {
-        const response = await fetch('https://meeel.xyz/users');
-        if (!response.ok) throw new Error('Failed to fetch users');
-        const data = await response.json();
-        setUsers(data);
-      } catch (error) {
-        console.error('Error fetching users:', error);
-      }
-    };
     fetchUsers();
   }, []);
+
+  const fetchUsers = async () => {
+    try {
+      const response = await fetch('https://meeel.xyz/users');
+      if (!response.ok) throw new Error('Failed to fetch users');
+      const data = await response.json();
+      setUsers(data);
+    } catch (error) {
+      console.error('Error fetching users:', error);
+    }
+  };
+
+  const deleteUser = async (email) => {
+    try {
+      const response = await fetch(`http://127.0.0.1:5000/deleteuser/${email}`, {
+        method: 'DELETE',
+      });
+      if (!response.ok) throw new Error('Failed to delete user');
+      setUsers(users.filter(user => user.email !== email));
+    } catch (error) {
+      console.error('Error deleting user:', error);
+    }
+  };
 
   const filteredUsers = users.filter(user => 
     Object.values(user).some(value => 
@@ -64,6 +85,7 @@ const UserManagement = () => {
             user={user}
             expanded={expandedUser === user.id}
             onClick={() => setExpandedUser(expandedUser === user.id ? null : user.id)}
+            onDelete={deleteUser}
           />
         ))}
       </div>

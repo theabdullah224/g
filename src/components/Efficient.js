@@ -96,7 +96,7 @@ const PricingCard = () => {
                 <div className="mt-5 flex justify-center text-black">
                   <div className="text-6xl font-medium">6.99</div>
                   <div className="ml-2 flex flex-col">
-                    <p className="text-lg font-bold">&#8203;</p>
+                    <p className="text-lg font-bold">£</p>
                     <p>per Month</p>
                   </div>
                 </div>
@@ -134,7 +134,7 @@ const PricingCard = () => {
                 <div className="mt-5 flex justify-center text-black">
                   <div className="text-6xl font-medium">69</div>
                   <div className="ml-2 flex flex-col">
-                    <p className="text-lg font-bold">&#8203;</p>
+                    <p className="text-lg font-bold">£</p>
                     <p>per Year</p>
                   </div>
                 </div>

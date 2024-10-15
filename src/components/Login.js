@@ -12,7 +12,8 @@ function Login() {
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(""); // New state for error message
     const { isLoggedIn, setIsLoggedIn } = useStore();
-    const { isAdmin, setIsAdmin } = useStore();
+    // const { isAdmin, setIsAdmin } = useStore();
+    const [isAdmin, setIsAdmin] = useState("")
     
     const navi = ()=>{
         
@@ -49,6 +50,7 @@ function Login() {
 
             setIsLoggedIn(true);
             setIsAdmin(data.is_admin)
+            
             localStorage.setItem('admin',data.is_admin)
             setTimeout(() => {
                 if(data.is_admin===true){

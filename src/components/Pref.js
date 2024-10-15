@@ -164,12 +164,12 @@ function Pref() {
   const parsedUserData = JSON.parse(userdata);
 
   const [menuStates, setMenuStates] = useState({
-    servings: { open: false, selected: parsedUserData.servings },
-    allergy: { open: false, selected: parsedUserData.food_allergy },
-    preference: { open: false, selected: parsedUserData.total_calories },
-    dislike: { open: false, selected: parsedUserData.dislikes },
-    mealPlan: { open: false, selected: parsedUserData.dietary_restriction },
-    familyMembers: { open: false, selected: parsedUserData.preferred_meal },
+    servings: { open: false, selected: parsedUserData?.servings  } ,
+    allergy: { open: false, selected: parsedUserData?.food_allergy },
+    preference: { open: false, selected: parsedUserData?.total_calories },
+    dislike: { open: false, selected: parsedUserData?.dislikes },
+    mealPlan: { open: false, selected: parsedUserData?.dietary_restriction },
+    familyMembers: { open: false, selected: parsedUserData?.preferred_meal },
   });
   const renderMenuItem = (menu, title, placeholder, options) => (
     <li className="relative ">
