@@ -104,6 +104,7 @@ function UserPage() {
   
       if (response.data && typeof response.data === 'object') {
         setUserData(response.data);
+        // console.log(response.data)
         localStorage.setItem('userdata', JSON.stringify(response.data));
 
         // Log the response data (or the saved data)
