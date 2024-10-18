@@ -1076,35 +1076,40 @@ onClick={handleEmailEditClick}
                {isLoggedIn && (
                  <div className="overflow-y-auto">
                    {pdfList.length > 0 ? (
-                     <ul className="space-y-4">
-                       {pdfList.map((pdf) => (
-                         <li key={pdf.id} className="flex items-center justify-between bg-gray-50 px-4 py-1 rounded-md hover:bg-gray-100 transition duration-150 ease-in-out">
-                           <div className="flex items-center space-x-4">
-                             <FontAwesomeIcon icon={faFilePdf} className="text-P-Green1 text-2xl" />
-                             <div>
-                               <p className="font-semibold text-gray-700">{pdf.name || "Unnamed PDF"}</p>
-                               <p className="text-sm text-gray-500">
-                               {new Date(pdf.generatedDate).toLocaleDateString()}
-                               </p>
-                             </div>
-                           </div>
-                           <div className="flex space-x-2">
-                             <button
-                               onClick={() => handlePdfClick(pdf.data)}
-                               className="px-3 py-1 bg-P-Green1 text-white rounded hover:bg-blue-600 transition duration-150 ease-in-out"
-                             >
-                               View
-                             </button>
-                             <button
-                               onClick={() => handleDelete(pdf.id)}
-                               className="px-3 py-1 bg-red-500 text-white rounded hover:bg-red-600 transition duration-150 ease-in-out"
-                             >
-                               <FontAwesomeIcon icon={faTrash} />
-                             </button>
-                           </div>
-                         </li>
-                       ))}
-                     </ul>
+                   <ul className="space-y-4 w-full max-w-4xl ">
+                   {pdfList.map((pdf) => (
+                     <li 
+                       key={pdf.id} 
+                       className="flex flex-col sm:flex-row items-start sm:items-center justify-between bg-gray-50 px-3 sm:px-4 py-3 rounded-md hover:bg-gray-100 transition duration-150 ease-in-out"
+                     >
+                       <div className="flex items-center space-x-4 mb-2 sm:mb-0">
+                         <FontAwesomeIcon icon={faFilePdf} className="text-P-Green1 text-xl sm:text-2xl flex-shrink-0" />
+                         <div className="min-w-0 flex-1">
+                           <p className="font-semibold text-gray-700 text-sm sm:text-base truncate  max-w-[8rem] sm:max-w-full">
+                             {pdf.name || "Unnamed PDF"}
+                           </p>
+                           <p className="text-xs sm:text-sm text-gray-500">
+                             {new Date(pdf.generatedDate).toLocaleDateString()}
+                           </p>
+                         </div>
+                       </div>
+                       <div className="flex space-x-2 w-full sm:w-auto justify-end mt-2 sm:mt-0">
+                         <button
+                           onClick={() => handlePdfClick(pdf.data)}
+                           className="flex-1 sm:flex-none px-3 py-1 bg-P-Green1 text-white text-sm rounded hover:bg-blue-600 transition duration-150 ease-in-out"
+                         >
+                           View
+                         </button>
+                         <button
+                           onClick={() => handleDelete(pdf.id)}
+                           className="flex-1 sm:flex-none px-3 py-1 bg-red-500 text-white text-sm rounded hover:bg-red-600 transition duration-150 ease-in-out"
+                         >
+                           <FontAwesomeIcon icon={faTrash} />
+                         </button>
+                       </div>
+                     </li>
+                   ))}
+                 </ul>
                    ) : (
                      <p className="text-center text-gray-500">No PDFs available</p>
                    )}
