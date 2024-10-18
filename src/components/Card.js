@@ -1315,13 +1315,16 @@ const CardNavigator = ({ setLoading }) => {
           currentCardIndex === 5 ? handleCard6Change : handleCard7Change;
         return (
           <div key={index} className="formElement  ">
+            <form action="" onSubmit={handleSignUp}>
+
             <input
               type={element.type}
               placeholder={element.placeholder}
               value={value}
               onChange={handleChange}
               className="border-2 border-white py-2   px-2 bg-transparent rounded-lg p-2 w-[19rem]   sm:w-[32rem]  placeholder-white text-white "
-            />
+              />
+              </form>
           </div>
         );
       default:
@@ -1920,6 +1923,7 @@ const CardNavigator = ({ setLoading }) => {
                       Back
                     </button>
                     <button
+                      type='submit'
                       className=" py-2 px-10 select-none w-[100px] sm:w-[200px] box-border rounded-lg flex items-center justify-center bg-white text-P-Green1 shadow-[inset_4px_4px_8px_#2a322179] hover:shadow-[inset_0px_0px_0px_#2A3221] font-roboto font-medium text-base"
                       onClick={handleSignUp}
                     >

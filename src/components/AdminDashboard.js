@@ -11,7 +11,7 @@ import {
   X,
 } from "lucide-react";
 import UserManagement from "./UserManagement";
-
+import { useNavigate } from "react-router-dom";
 const SidebarItem = ({ icon: Icon, label, active, onClick }) => (
   <div
     className={`flex items-center p-3 cursor-pointer transition-colors duration-200 ${
@@ -28,13 +28,13 @@ const AdminDashboard = () => {
   const [activeSection, setActiveSection] = useState("User Management");
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-
+  const navigate = useNavigate();
   const sidebarItems = [
     { icon: Users, label: "User Management" },
     { icon: UserPlus, label: "Add User" },
     // { icon: CreditCard, label: 'Subscription Management' },
     // { icon: Utensils, label: 'Meal Plan Management' },
-    { icon: FileText, label: "PDF Management" },
+    // { icon: FileText, label: "PDF Management" },
     // { icon: BarChart2, label: 'Analytics and Reports' },
     // { icon: Bell, label: 'Notifications & Messaging' },
   ];
@@ -57,7 +57,13 @@ const AdminDashboard = () => {
     console.log(formData  )
   };
   
+  const handleLogout = () => {
+    localStorage.removeItem("user");
+    localStorage.removeItem("admin")
+    navigate("/");
+    window.location.reload(true);
 
+  };
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -214,6 +220,12 @@ const AdminDashboard = () => {
             <h2 className="text-2xl font-bold text-gray-900">
               {activeSection}
             </h2>
+            <button
+                  className=" py-1 px-7 rounded-lg flex items-center justify-center bg-P-Green1 text-white shadow-[inset_4px_4px_8px_#2a322179] hover:shadow-[inset_0px_0px_0px_#2A3221] font-roboto font-medium text-base"
+                  onClick={handleLogout}
+                >
+                  Logout
+                </button>
           </div>
         </header>
 

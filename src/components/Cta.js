@@ -75,7 +75,7 @@ function Cta(props) {
             </button>
           </div>
 
-          <div>
+          {/* <div>
             <div className=" lg:min-w-[32rem] mx-auto mt-10 ">
               <form onSubmit={handleSubmit} className="space-y-4">
                 <div>
@@ -132,7 +132,7 @@ function Cta(props) {
                 </p>
               )}
             </div>
-          </div>
+          </div> */}
           </div>
 
         </div>

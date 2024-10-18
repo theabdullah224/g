@@ -5,18 +5,17 @@ import useStore from "./Store";
 import { useNavigate } from "react-router-dom";
 const PricingCard = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [email, setemail] = useState("")
-  const [status, setstatus] = useState("")
+  const [email, setemail] = useState("");
+  const [status, setstatus] = useState("");
   useEffect(() => {
-    
     // Check localStorage for the "user" object
     const user = localStorage.getItem("user");
-    console.log(user)
+    console.log(user);
     if (user) {
-      const parsedUser = JSON.parse(user); 
+      const parsedUser = JSON.parse(user);
       fetchUserData(parsedUser.user_id); // Parse the JSON string
-  const email = parsedUser.email;  // Access the email field
-    setemail(email)
+      const email = parsedUser.email; // Access the email field
+      setemail(email);
       setIsLoggedIn(true); // Set logged-in state to true if a user is found
     } else {
       setIsLoggedIn(false); // Set logged-in state to false if no user is found
@@ -25,29 +24,26 @@ const PricingCard = () => {
   const [loader, setLoader] = useState(false);
   const navigate = useNavigate();
   // Subscription Function
-  
 
   const fetchUserData = async (userId) => {
     // setLoading(true);
     try {
       const response = await axios.get(`https://meeel.xyz/show`, {
-        headers: { 'Authorization': userId.toString() }
+        headers: { Authorization: userId.toString() },
       });
-  
-  
-      if (response.data && typeof response.data === 'object') {
+
+      if (response.data && typeof response.data === "object") {
         const data = response.data;
-        setstatus(response.data.subscription_status)
-        localStorage.setItem('userdata', JSON.stringify(response.data));
+        setstatus(response.data.subscription_status);
+        console.log(status);
+        localStorage.setItem("userdata", JSON.stringify(response.data));
 
         // Log the response data (or the saved data)
-      
       } else {
-        throw new Error('Unexpected response format');
+        throw new Error("Unexpected response format");
       }
     } catch (error) {
       // setError('Failed to fetch user data: ' + error.message);
-      
     } finally {
       // setLoading(false);
     }
@@ -56,21 +52,19 @@ const PricingCard = () => {
   const buyFunction = async (planType) => {
     setLoader(true);
     try {
-      if(isLoggedIn){
-
+      if (isLoggedIn) {
         const response = await axios.post("https://meeel.xyz/payment", {
           planType,
-          email
+          email,
         });
         if (response.status === 200) {
-          if(isLoggedIn){
-  
+          if (isLoggedIn) {
             window.location.href = response.data.url;
-          }else{
+          } else {
             navigate("/login");
           }
         }
-      }else{
+      } else {
         navigate("/plans#form");
       }
     } catch (error) {
@@ -131,190 +125,337 @@ const PricingCard = () => {
                 </div>
               </div>
             </div> */}
-            {isLoggedIn && (
+          
+            
+                <div className="w-64  ">
+                  <div className="rounded-2xl bg-white px-5 py-10 shadow-lg border">
+                    <p className="text-center text-2xl font-bold text-black"></p>
 
-           <>
-            <div className="w-64  ">
-              <div className="rounded-2xl bg-white px-5 py-10 shadow-lg">
-                <p className="text-center text-2xl font-bold text-black"></p>
+                    <div className="mt-5 flex justify-center text-black">
+                      <div className="text-6xl font-medium">6.99</div>
+                      <div className="ml-2 flex flex-col">
+                        <p className="text-lg font-bold">£</p>
+                        <p>per Month</p>
+                      </div>
+                    </div>
 
-                <div className="mt-5 flex justify-center text-black">
-                  <div className="text-6xl font-medium">6.99</div>
-                  <div className="ml-2 flex flex-col">
-                    <p className="text-lg font-bold">£</p>
-                    <p>per Month</p>
+                    <div className="ml-3 mt-8">
+                      <ul className="grid gap-4">
+                        <li className="flex items-center text-black">
+                          <svg
+                            className="mr-3 h-4 w-4 fill-current text-green-400"
+                            xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 512 512"
+                          >
+                            <path d="M256 0C114.6 0 0 114.6 0 256s114.6 256 256 256s256-114.6 256-256S397.4 0 256 0zM371.8 211.8l-128 128C238.3 345.3 231.2 348 224 348s-14.34-2.719-19.81-8.188l-64-64c-10.91-10.94-10.91-28.69 0-39.63c10.94-10.94 28.69-10.94 39.63 0L224 280.4l108.2-108.2c10.94-10.94 28.69-10.94 39.63 0C382.7 183.1 382.7 200.9 371.8 211.8z"></path>
+                          </svg>
+                          Start After 30 Days
+                        </li>
+                        <li className="flex items-center text-black">
+                          <svg
+                            className="mr-3 h-4 w-4 fill-current text-green-400"
+                            xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 512 512"
+                          >
+                            <path d="M256 0C114.6 0 0 114.6 0 256s114.6 256 256 256s256-114.6 256-256S397.4 0 256 0zM371.8 211.8l-128 128C238.3 345.3 231.2 348 224 348s-14.34-2.719-19.81-8.188l-64-64c-10.91-10.94-10.91-28.69 0-39.63c10.94-10.94 28.69-10.94 39.63 0L224 280.4l108.2-108.2c10.94-10.94 28.69-10.94 39.63 0C382.7 183.1 382.7 200.9 371.8 211.8z"></path>
+                          </svg>
+                          Weekly Meal Plan
+                        </li>
+                        <li className="flex items-center text-black">
+                          <svg
+                            className="mr-3 h-4 w-4 fill-current text-green-400"
+                            xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 512 512"
+                          >
+                            <path d="M256 0C114.6 0 0 114.6 0 256s114.6 256 256 256s256-114.6 256-256S397.4 0 256 0zM371.8 211.8l-128 128C238.3 345.3 231.2 348 224 348s-14.34-2.719-19.81-8.188l-64-64c-10.91-10.94-10.91-28.69 0-39.63c10.94-10.94 28.69-10.94 39.63 0L224 280.4l108.2-108.2c10.94-10.94 28.69-10.94 39.63 0C382.7 183.1 382.7 200.9 371.8 211.8z"></path>
+                          </svg>
+                          PDF Delivered via Email
+                        </li>
+                        <li className="flex items-center text-black">
+                          <svg
+                            className="mr-3 h-4 w-4 fill-current text-green-400"
+                            xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 512 512"
+                          >
+                            <path d="M256 0C114.6 0 0 114.6 0 256s114.6 256 256 256s256-114.6 256-256S397.4 0 256 0zM371.8 211.8l-128 128C238.3 345.3 231.2 348 224 348s-14.34-2.719-19.81-8.188l-64-64c-10.91-10.94-10.91-28.69 0-39.63c10.94-10.94 28.69-10.94 39.63 0L224 280.4l108.2-108.2c10.94-10.94 28.69-10.94 39.63 0C382.7 183.1 382.7 200.9 371.8 211.8z"></path>
+                          </svg>
+                          Allergy-Friendly Options
+                        </li>
+                        
+                        <li className="flex items-center text-black">
+                          <svg
+                            className="mr-3 h-4 w-4 fill-current text-green-400"
+                            xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 512 512"
+                          >
+                            <path d="M256 0C114.6 0 0 114.6 0 256s114.6 256 256 256s256-114.6 256-256S397.4 0 256 0zM371.8 211.8l-128 128C238.3 345.3 231.2 348 224 348s-14.34-2.719-19.81-8.188l-64-64c-10.91-10.94-10.91-28.69 0-39.63c10.94-10.94 28.69-10.94 39.63 0L224 280.4l108.2-108.2c10.94-10.94 28.69-10.94 39.63 0C382.7 183.1 382.7 200.9 371.8 211.8z"></path>
+                          </svg>
+                          Shopping List Included
+                        </li>
+                      </ul>
+                    </div>
+
+                    <div className="mt-8">
+                      {isLoggedIn &&(
+                        <>
+                        {status === "ultra_pro" || status === "inactive"  ? (
+
+                          <button
+                          onClick={() => buyFunction("pro")}
+                          className="w-full py-2 px-4 rounded-lg flex items-center justify-center bg-P-Green1 text-white shadow-[inset_4px_4px_8px_#2a322179] hover:shadow-[inset_0px_0px_0px_#2A3221] font-roboto font-medium text-base"
+                          >
+                          Upgrade
+                        </button>
+                        ):(
+                          <button
+                          // onClick={() => buyFunction("pro")}
+                          className="w-full py-2 px-4 rounded-lg flex items-center justify-center bg-P-Green1 text-white shadow-[inset_4px_4px_8px_#2a322179] hover:shadow-[inset_0px_0px_0px_#2A3221] font-roboto font-medium text-base"
+                          >
+                          Subscribed
+                        </button>
+                        )}
+                          </>
+                        )}
+                      
+                    </div>
                   </div>
                 </div>
+                <div className="w-64 ">
+                  <div className="rounded-2xl bg-white px-5 py-10 shadow-lg border">
+                    <p className="text-center text-2xl font-bold text-black"></p>
 
-                <div className="ml-3 mt-8">
-                  <ul className="grid gap-4">
+                    <div className="mt-5 flex justify-center text-black">
+                      <div className="text-6xl font-medium">69</div>
+                      <div className="ml-2 flex flex-col">
+                        <p className="text-lg font-bold">£</p>
+                        <p>per Year</p>
+                      </div>
+                    </div>
+
+                    <div className="ml-3 mt-8">
+                    <ul className="grid gap-4">
                     <li className="flex items-center text-black">
-                      <svg
-                        className="mr-3 h-4 w-4 fill-current text-green-400"
-                        xmlns="http://www.w3.org/2000/svg"
-                        viewBox="0 0 512 512"
-                      >
-                        <path d="M256 0C114.6 0 0 114.6 0 256s114.6 256 256 256s256-114.6 256-256S397.4 0 256 0zM371.8 211.8l-128 128C238.3 345.3 231.2 348 224 348s-14.34-2.719-19.81-8.188l-64-64c-10.91-10.94-10.91-28.69 0-39.63c10.94-10.94 28.69-10.94 39.63 0L224 280.4l108.2-108.2c10.94-10.94 28.69-10.94 39.63 0C382.7 183.1 382.7 200.9 371.8 211.8z"></path>
-                      </svg>
-                      Weekly Meal Plan
-                    </li>
-                  </ul>
-                </div>
+                          <svg
+                            className="mr-3 h-4 w-4 fill-current text-green-400"
+                            xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 512 512"
+                          >
+                            <path d="M256 0C114.6 0 0 114.6 0 256s114.6 256 256 256s256-114.6 256-256S397.4 0 256 0zM371.8 211.8l-128 128C238.3 345.3 231.2 348 224 348s-14.34-2.719-19.81-8.188l-64-64c-10.91-10.94-10.91-28.69 0-39.63c10.94-10.94 28.69-10.94 39.63 0L224 280.4l108.2-108.2c10.94-10.94 28.69-10.94 39.63 0C382.7 183.1 382.7 200.9 371.8 211.8z"></path>
+                          </svg>
+                          Start After 30 Days
+                        </li>
+                        <li className="flex items-center text-black">
+                          <svg
+                            className="mr-3 h-4 w-4 fill-current text-green-400"
+                            xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 512 512"
+                          >
+                            <path d="M256 0C114.6 0 0 114.6 0 256s114.6 256 256 256s256-114.6 256-256S397.4 0 256 0zM371.8 211.8l-128 128C238.3 345.3 231.2 348 224 348s-14.34-2.719-19.81-8.188l-64-64c-10.91-10.94-10.91-28.69 0-39.63c10.94-10.94 28.69-10.94 39.63 0L224 280.4l108.2-108.2c10.94-10.94 28.69-10.94 39.63 0C382.7 183.1 382.7 200.9 371.8 211.8z"></path>
+                          </svg>
+                          Weekly Meal Plan
+                        </li>
+                        <li className="flex items-center text-black">
+                          <svg
+                            className="mr-3 h-4 w-4 fill-current text-green-400"
+                            xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 512 512"
+                          >
+                            <path d="M256 0C114.6 0 0 114.6 0 256s114.6 256 256 256s256-114.6 256-256S397.4 0 256 0zM371.8 211.8l-128 128C238.3 345.3 231.2 348 224 348s-14.34-2.719-19.81-8.188l-64-64c-10.91-10.94-10.91-28.69 0-39.63c10.94-10.94 28.69-10.94 39.63 0L224 280.4l108.2-108.2c10.94-10.94 28.69-10.94 39.63 0C382.7 183.1 382.7 200.9 371.8 211.8z"></path>
+                          </svg>
+                          PDF Delivered via Email
+                        </li>
+                        <li className="flex items-center text-black">
+                          <svg
+                            className="mr-3 h-4 w-4 fill-current text-green-400"
+                            xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 512 512"
+                          >
+                            <path d="M256 0C114.6 0 0 114.6 0 256s114.6 256 256 256s256-114.6 256-256S397.4 0 256 0zM371.8 211.8l-128 128C238.3 345.3 231.2 348 224 348s-14.34-2.719-19.81-8.188l-64-64c-10.91-10.94-10.91-28.69 0-39.63c10.94-10.94 28.69-10.94 39.63 0L224 280.4l108.2-108.2c10.94-10.94 28.69-10.94 39.63 0C382.7 183.1 382.7 200.9 371.8 211.8z"></path>
+                          </svg>
+                          Allergy-Friendly Options
+                        </li>
+                        
+                        <li className="flex items-center text-black">
+                          <svg
+                            className="mr-3 h-4 w-4 fill-current text-green-400"
+                            xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 512 512"
+                          >
+                            <path d="M256 0C114.6 0 0 114.6 0 256s114.6 256 256 256s256-114.6 256-256S397.4 0 256 0zM371.8 211.8l-128 128C238.3 345.3 231.2 348 224 348s-14.34-2.719-19.81-8.188l-64-64c-10.91-10.94-10.91-28.69 0-39.63c10.94-10.94 28.69-10.94 39.63 0L224 280.4l108.2-108.2c10.94-10.94 28.69-10.94 39.63 0C382.7 183.1 382.7 200.9 371.8 211.8z"></path>
+                          </svg>
+                          Shopping List Included
+                        </li>
+                      </ul>
+                    </div>
 
-
-                <div className="mt-8">
-                {status === "ultra_pro" ?(
-
-                  <button
-                  onClick={() => buyFunction("pro")}
-                  className="w-full py-2 px-4 rounded-lg flex items-center justify-center bg-P-Green1 text-white shadow-[inset_4px_4px_8px_#2a322179] hover:shadow-[inset_0px_0px_0px_#2A3221] font-roboto font-medium text-base"
-                  >
-                    {isLoggedIn ? "Upgrade":"Start After 30 Days"}
-                    
-                  </button>
-                  ) :(
-                    <button
-                 
-                    className="w-full py-2 px-4 rounded-lg flex items-center justify-center bg-P-Green1 text-white shadow-[inset_4px_4px_8px_#2a322179] hover:shadow-[inset_0px_0px_0px_#2A3221] font-roboto font-medium text-base"
-                    >
-                      Subscribed
-                    </button>
-                  )}
-                </div>
-              </div>
-            </div>
-            <div className="w-64 ">
-              <div className="rounded-2xl bg-white px-5 py-10 shadow-lg">
-                <p className="text-center text-2xl font-bold text-black"></p>
-
-                <div className="mt-5 flex justify-center text-black">
-                  <div className="text-6xl font-medium">69</div>
-                  <div className="ml-2 flex flex-col">
-                    <p className="text-lg font-bold">£</p>
-                    <p>per Year</p>
+                    <div className="mt-8">
+                        {isLoggedIn && (
+                            <>
+                            {status === "pro" || status === "inactive"?(
+                              <button
+                              onClick={() => buyFunction("ultra_pro")}
+                              className="w-full py-2 px-4 rounded-lg flex items-center justify-center bg-P-Green1 text-white shadow-[inset_4px_4px_8px_#2a322179] hover:shadow-[inset_0px_0px_0px_#2A3221] font-roboto font-medium text-base"
+                              
+                              >
+                          Upgrade
+                        </button>
+                          ):(
+                            <button
+                            // onClick={() => buyFunction("ultra_pro")}
+                            className="w-full py-2 px-4 rounded-lg flex items-center justify-center bg-P-Green1 text-white shadow-[inset_4px_4px_8px_#2a322179] hover:shadow-[inset_0px_0px_0px_#2A3221] font-roboto font-medium text-base"
+                            
+                            >
+                        Subscribed
+                      </button>
+                          )}
+                            </>
+                        )}
+                   
+                    </div>
                   </div>
                 </div>
+              
+           
+            {/* {!isLoggedIn && (
+              <>
+                <div className="w-64  ">
+                  <div className="rounded-2xl bg-white px-5 py-10 shadow-lg border">
+                    <p className="text-center text-2xl font-bold text-black"></p>
 
-                <div className="ml-3 mt-8">
-                  <ul className="grid gap-4">
-                    <li className="flex items-center text-black">
-                      <svg
-                        className="mr-3 h-4 w-4 fill-current text-green-400"
-                        xmlns="http://www.w3.org/2000/svg"
-                        viewBox="0 0 512 512"
+                    <div className="mt-5 flex justify-center text-black">
+                      <div className="text-6xl font-medium">6.99</div>
+                      <div className="ml-2 flex flex-col">
+                        <p className="text-lg font-bold">£</p>
+                        <p>per Month</p>
+                      </div>
+                    </div>
+
+                    <div className="ml-3 mt-8">
+                    <ul className="grid gap-4">
+                        <li className="flex items-center text-black">
+                          <svg
+                            className="mr-3 h-4 w-4 fill-current text-green-400"
+                            xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 512 512"
+                          >
+                            <path d="M256 0C114.6 0 0 114.6 0 256s114.6 256 256 256s256-114.6 256-256S397.4 0 256 0zM371.8 211.8l-128 128C238.3 345.3 231.2 348 224 348s-14.34-2.719-19.81-8.188l-64-64c-10.91-10.94-10.91-28.69 0-39.63c10.94-10.94 28.69-10.94 39.63 0L224 280.4l108.2-108.2c10.94-10.94 28.69-10.94 39.63 0C382.7 183.1 382.7 200.9 371.8 211.8z"></path>
+                          </svg>
+                          Weekly Meal Plan
+                        </li>
+                        <li className="flex items-center text-black">
+                          <svg
+                            className="mr-3 h-4 w-4 fill-current text-green-400"
+                            xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 512 512"
+                          >
+                            <path d="M256 0C114.6 0 0 114.6 0 256s114.6 256 256 256s256-114.6 256-256S397.4 0 256 0zM371.8 211.8l-128 128C238.3 345.3 231.2 348 224 348s-14.34-2.719-19.81-8.188l-64-64c-10.91-10.94-10.91-28.69 0-39.63c10.94-10.94 28.69-10.94 39.63 0L224 280.4l108.2-108.2c10.94-10.94 28.69-10.94 39.63 0C382.7 183.1 382.7 200.9 371.8 211.8z"></path>
+                          </svg>
+                          PDF Delivered via Email
+                        </li>
+                        <li className="flex items-center text-black">
+                          <svg
+                            className="mr-3 h-4 w-4 fill-current text-green-400"
+                            xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 512 512"
+                          >
+                            <path d="M256 0C114.6 0 0 114.6 0 256s114.6 256 256 256s256-114.6 256-256S397.4 0 256 0zM371.8 211.8l-128 128C238.3 345.3 231.2 348 224 348s-14.34-2.719-19.81-8.188l-64-64c-10.91-10.94-10.91-28.69 0-39.63c10.94-10.94 28.69-10.94 39.63 0L224 280.4l108.2-108.2c10.94-10.94 28.69-10.94 39.63 0C382.7 183.1 382.7 200.9 371.8 211.8z"></path>
+                          </svg>
+                          Allergy-Friendly Options
+                        </li>
+                        
+                        <li className="flex items-center text-black">
+                          <svg
+                            className="mr-3 h-4 w-4 fill-current text-green-400"
+                            xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 512 512"
+                          >
+                            <path d="M256 0C114.6 0 0 114.6 0 256s114.6 256 256 256s256-114.6 256-256S397.4 0 256 0zM371.8 211.8l-128 128C238.3 345.3 231.2 348 224 348s-14.34-2.719-19.81-8.188l-64-64c-10.91-10.94-10.91-28.69 0-39.63c10.94-10.94 28.69-10.94 39.63 0L224 280.4l108.2-108.2c10.94-10.94 28.69-10.94 39.63 0C382.7 183.1 382.7 200.9 371.8 211.8z"></path>
+                          </svg>
+                          Shopping List Included
+                        </li>
+                      </ul>
+                    </div>
+
+                    <div className="mt-8">
+                      <button
+                        onClick={() => buyFunction("pro")}
+                        className="w-full py-2 px-4 rounded-lg flex items-center justify-center bg-P-Green1 text-white shadow-[inset_4px_4px_8px_#2a322179] hover:shadow-[inset_0px_0px_0px_#2A3221] font-roboto font-medium text-base"
                       >
-                        <path d="M256 0C114.6 0 0 114.6 0 256s114.6 256 256 256s256-114.6 256-256S397.4 0 256 0zM371.8 211.8l-128 128C238.3 345.3 231.2 348 224 348s-14.34-2.719-19.81-8.188l-64-64c-10.91-10.94-10.91-28.69 0-39.63c10.94-10.94 28.69-10.94 39.63 0L224 280.4l108.2-108.2c10.94-10.94 28.69-10.94 39.63 0C382.7 183.1 382.7 200.9 371.8 211.8z"></path>
-                      </svg>
-                      Weekly Meal Plan
-                    </li>
-                  </ul>
-                </div>
-
-                <div className="mt-8">
-                {status === "pro" ? (
-
-                  <button
-                  onClick={() => buyFunction("ultra_pro")}
-                  className="w-full py-2 px-4 rounded-lg flex items-center justify-center bg-P-Green1 text-white shadow-[inset_4px_4px_8px_#2a322179] hover:shadow-[inset_0px_0px_0px_#2A3221] font-roboto font-medium text-base"
-                  >
-                    {isLoggedIn ? "Upgrade":"Start After 30 Days"}
-                  </button>
-                  ):(
-                    <button
-                 
-                  className="w-full py-2 px-4 rounded-lg flex items-center justify-center bg-P-Green1 text-white shadow-[inset_4px_4px_8px_#2a322179] hover:shadow-[inset_0px_0px_0px_#2A3221] font-roboto font-medium text-base"
-                  >
-                    Subscribed
-                  </button>
-                  ) }
-                </div>
-              </div>
-            </div>
- 
-            </>
-          )}
-          {!isLoggedIn && (
-            <>
-               <div className="w-64  ">
-              <div className="rounded-2xl bg-white px-5 py-10 shadow-lg">
-                <p className="text-center text-2xl font-bold text-black"></p>
-
-                <div className="mt-5 flex justify-center text-black">
-                  <div className="text-6xl font-medium">6.99</div>
-                  <div className="ml-2 flex flex-col">
-                    <p className="text-lg font-bold">£</p>
-                    <p>per Month</p>
+                        {isLoggedIn ? "Upgrade" : "Start After 30 Days"}
+                      </button>
+                    </div>
                   </div>
                 </div>
+                <div className="w-64 ">
+                  <div className="rounded-2xl bg-white px-5 py-10 shadow-lg border">
+                    <p className="text-center text-2xl font-bold text-black"></p>
 
-                <div className="ml-3 mt-8">
-                  <ul className="grid gap-4">
-                    <li className="flex items-center text-black">
-                      <svg
-                        className="mr-3 h-4 w-4 fill-current text-green-400"
-                        xmlns="http://www.w3.org/2000/svg"
-                        viewBox="0 0 512 512"
+                    <div className="mt-5 flex justify-center text-black">
+                      <div className="text-6xl font-medium">69</div>
+                      <div className="ml-2 flex flex-col">
+                        <p className="text-lg font-bold">£</p>
+                        <p>per Year</p>
+                      </div>
+                    </div>
+
+                    <div className="ml-3 mt-8">
+                    <ul className="grid gap-4">
+                        <li className="flex items-center text-black">
+                          <svg
+                            className="mr-3 h-4 w-4 fill-current text-green-400"
+                            xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 512 512"
+                          >
+                            <path d="M256 0C114.6 0 0 114.6 0 256s114.6 256 256 256s256-114.6 256-256S397.4 0 256 0zM371.8 211.8l-128 128C238.3 345.3 231.2 348 224 348s-14.34-2.719-19.81-8.188l-64-64c-10.91-10.94-10.91-28.69 0-39.63c10.94-10.94 28.69-10.94 39.63 0L224 280.4l108.2-108.2c10.94-10.94 28.69-10.94 39.63 0C382.7 183.1 382.7 200.9 371.8 211.8z"></path>
+                          </svg>
+                          Weekly Meal Plan
+                        </li>
+                        <li className="flex items-center text-black">
+                          <svg
+                            className="mr-3 h-4 w-4 fill-current text-green-400"
+                            xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 512 512"
+                          >
+                            <path d="M256 0C114.6 0 0 114.6 0 256s114.6 256 256 256s256-114.6 256-256S397.4 0 256 0zM371.8 211.8l-128 128C238.3 345.3 231.2 348 224 348s-14.34-2.719-19.81-8.188l-64-64c-10.91-10.94-10.91-28.69 0-39.63c10.94-10.94 28.69-10.94 39.63 0L224 280.4l108.2-108.2c10.94-10.94 28.69-10.94 39.63 0C382.7 183.1 382.7 200.9 371.8 211.8z"></path>
+                          </svg>
+                          PDF Delivered via Email
+                        </li>
+                        <li className="flex items-center text-black">
+                          <svg
+                            className="mr-3 h-4 w-4 fill-current text-green-400"
+                            xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 512 512"
+                          >
+                            <path d="M256 0C114.6 0 0 114.6 0 256s114.6 256 256 256s256-114.6 256-256S397.4 0 256 0zM371.8 211.8l-128 128C238.3 345.3 231.2 348 224 348s-14.34-2.719-19.81-8.188l-64-64c-10.91-10.94-10.91-28.69 0-39.63c10.94-10.94 28.69-10.94 39.63 0L224 280.4l108.2-108.2c10.94-10.94 28.69-10.94 39.63 0C382.7 183.1 382.7 200.9 371.8 211.8z"></path>
+                          </svg>
+                          Allergy-Friendly Options
+                        </li>
+                        
+                        <li className="flex items-center text-black">
+                          <svg
+                            className="mr-3 h-4 w-4 fill-current text-green-400"
+                            xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 512 512"
+                          >
+                            <path d="M256 0C114.6 0 0 114.6 0 256s114.6 256 256 256s256-114.6 256-256S397.4 0 256 0zM371.8 211.8l-128 128C238.3 345.3 231.2 348 224 348s-14.34-2.719-19.81-8.188l-64-64c-10.91-10.94-10.91-28.69 0-39.63c10.94-10.94 28.69-10.94 39.63 0L224 280.4l108.2-108.2c10.94-10.94 28.69-10.94 39.63 0C382.7 183.1 382.7 200.9 371.8 211.8z"></path>
+                          </svg>
+                          Shopping List Included
+                        </li>
+                      </ul>
+                    </div>
+
+                    <div className="mt-8">
+                      <button
+                        onClick={() => buyFunction("ultra_pro")}
+                        className="w-full py-2 px-4 rounded-lg flex items-center justify-center bg-P-Green1 text-white shadow-[inset_4px_4px_8px_#2a322179] hover:shadow-[inset_0px_0px_0px_#2A3221] font-roboto font-medium text-base"
                       >
-                        <path d="M256 0C114.6 0 0 114.6 0 256s114.6 256 256 256s256-114.6 256-256S397.4 0 256 0zM371.8 211.8l-128 128C238.3 345.3 231.2 348 224 348s-14.34-2.719-19.81-8.188l-64-64c-10.91-10.94-10.91-28.69 0-39.63c10.94-10.94 28.69-10.94 39.63 0L224 280.4l108.2-108.2c10.94-10.94 28.69-10.94 39.63 0C382.7 183.1 382.7 200.9 371.8 211.8z"></path>
-                      </svg>
-                      Weekly Meal Plan
-                    </li>
-                  </ul>
-                </div>
-
-                <div className="mt-8">
-                 
-                  <button
-                    onClick={() => buyFunction("pro")}
-                    className="w-full py-2 px-4 rounded-lg flex items-center justify-center bg-P-Green1 text-white shadow-[inset_4px_4px_8px_#2a322179] hover:shadow-[inset_0px_0px_0px_#2A3221] font-roboto font-medium text-base"
-                  >
-                    {isLoggedIn ? "Upgrade":"Start After 30 Days"}
-                    
-                  </button>
-                </div>
-              </div>
-            </div>
-            <div className="w-64 ">
-              <div className="rounded-2xl bg-white px-5 py-10 shadow-lg">
-                <p className="text-center text-2xl font-bold text-black"></p>
-
-                <div className="mt-5 flex justify-center text-black">
-                  <div className="text-6xl font-medium">69</div>
-                  <div className="ml-2 flex flex-col">
-                    <p className="text-lg font-bold">£</p>
-                    <p>per Year</p>
+                        {isLoggedIn ? "Upgrade" : "Start After 30 Days"}
+                      </button>
+                    </div>
                   </div>
                 </div>
-
-                <div className="ml-3 mt-8">
-                  <ul className="grid gap-4">
-                    <li className="flex items-center text-black">
-                      <svg
-                        className="mr-3 h-4 w-4 fill-current text-green-400"
-                        xmlns="http://www.w3.org/2000/svg"
-                        viewBox="0 0 512 512"
-                      >
-                        <path d="M256 0C114.6 0 0 114.6 0 256s114.6 256 256 256s256-114.6 256-256S397.4 0 256 0zM371.8 211.8l-128 128C238.3 345.3 231.2 348 224 348s-14.34-2.719-19.81-8.188l-64-64c-10.91-10.94-10.91-28.69 0-39.63c10.94-10.94 28.69-10.94 39.63 0L224 280.4l108.2-108.2c10.94-10.94 28.69-10.94 39.63 0C382.7 183.1 382.7 200.9 371.8 211.8z"></path>
-                      </svg>
-                      Weekly Meal Plan
-                    </li>
-                  </ul>
-                </div>
-
-                <div className="mt-8">
-                  <button
-                    onClick={() => buyFunction("ultra_pro")}
-                    className="w-full py-2 px-4 rounded-lg flex items-center justify-center bg-P-Green1 text-white shadow-[inset_4px_4px_8px_#2a322179] hover:shadow-[inset_0px_0px_0px_#2A3221] font-roboto font-medium text-base"
-                  >
-                    {isLoggedIn ? "Upgrade":"Start After 30 Days"}
-                  </button>
-                </div>
-              </div>
-            </div>
-            </>
-          )}
-
-
+              </>
+            )} */}
           </div>
         </section>
       )}

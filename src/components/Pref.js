@@ -129,18 +129,18 @@ function Pref() {
   const [diatryrestriction, setdiatryrestriction] = useState("");
   const [Error, setError] = useState("");
 
+  const userdataa = localStorage.getItem("userdata");
   useEffect(() => {
     const user = localStorage.getItem("user");
-    const userdata = localStorage.getItem("userdata");
     if (userdata) {
-      const parsedUserData = JSON.parse(userdata);
+      const parsedUserData = JSON.parse(userdataa);
       setcolories(parsedUserData.total_calories);
       setdiatryrestriction(parsedUserData.dietary_restriction);
       setfamilymember(parsedUserData.preferred_meal);
       setallergy(parsedUserData.food_allergy);
       setdislike(parsedUserData.dislikes);
       setservingss(parsedUserData.servings);
-
+      
     } else {
     }
     if (user) {
@@ -158,7 +158,7 @@ function Pref() {
       // setHasGeneratedPDF(userData.hasGeneratedPDF || false);
       setIsSubscribed(userData.isSubscribed || false);
     }
-  }, [servingss, diatryrestriction, familymember, dislike, allergy, colories]);
+  }, [servingss, diatryrestriction, familymember, dislike, allergy, colories,userdataa]);
 
   const userdata = localStorage.getItem("userdata");
   const parsedUserData = JSON.parse(userdata);
@@ -176,7 +176,7 @@ function Pref() {
       <span className="text-base font-roboto font-bold">{title}</span>
       <button
         onClick={() => isEditable && handleMenuClick(menu)}
-        className={`text-sm text-Text2 border-2 rounded-lg border-[#A6AE9D] px-4 py-3 w-[90vw] sm:w-[30rem] flex justify-between items-center ${
+        className={`text-sm text-Text2 border-2 rounded-lg border-[#A6AE9D]  px-4 py-3 w-[75vw] sm:w-[30rem] flex justify-between items-center ${
           !isEditable && "opacity-50 cursor-not-allowed"
         }`}
         disabled={!isEditable}
@@ -422,21 +422,22 @@ function Pref() {
       }
     }
   };
-  const savePDFToLocalStorage = (pdfData) => {
+  const savePDFToLocalStorage = (pdfData,pdfname) => {
     try {
       const pdfList = JSON.parse(localStorage.getItem("pdfList")) || [];
       const currentDate = new Date();
+      
       const newPDF = {
         id: Date.now(),
-        name: `MealPlan_${currentDate.toISOString()}.pdf`,
+        name: `${pdfname}.pdf`,
         data: pdfData,
         generatedDate: currentDate.toISOString(),
       };
 
       // Limit to storing only the last 5 PDFs
-      if (pdfList.length >= 5) {
-        pdfList.shift(); // Remove the oldest PDF
-      }
+      // if (pdfList.length >= 5) {
+      // }
+      // pdfList.shift(); // Remove the oldest PDF
 
       pdfList.push(newPDF);
       localStorage.setItem("pdfList", JSON.stringify(pdfList));
@@ -556,7 +557,7 @@ function Pref() {
     doc.text(``, 14, doc.lastAutoTable.finalY + 10);
 
     const pdfData = doc.output("datauristring");
-    savePDFToLocalStorage(pdfData);
+    savePDFToLocalStorage(pdfData,"ShoppingList");
     doc.save("ShoppingList.pdf");
     return pdfData;
   };
@@ -624,17 +625,17 @@ function Pref() {
     doc.text(``, 14, doc.lastAutoTable.finalY + 10);
 
     const pdfData = doc.output("datauristring");
-    savePDFToLocalStorage(pdfData);
+    savePDFToLocalStorage(pdfData,"MealPlan");
     doc.save("MealPlan.pdf");
     return pdfData;
   };
 
   return (
     <div>
-      <div>
-        <div className="w-[80rem]  my-[5rem] sm:my-[5rem] xl:px-14">
+      <div className="">
+        <div className="max-w-[40rem]  my-[2rem] sm:my-[5rem] xl:px-14 mx-auto">
           <div className="m-auto xl:m-0  w-fit flex flex-col xl:items-start items-center ">
-            <h2 className="text-2xl text-center xl:text-left mb-5 inline-block text-Text1 border-b-8 border-S-Orange leading-none font-bold">
+            {/* <h2 className="text-2xl text-center xl:text-left mb-5 inline-block text-Text1 border-b-8 border-S-Orange leading-none font-bold">
               Preferences
             </h2>
             <p className="text-lg text-center xl:text-left mb-5 w-[30rem] xl:w-[50rem] text-Text2 px-4 sm:px-0">
@@ -642,7 +643,7 @@ function Pref() {
               plan. Your input allows us to tailor options that align with your
               tastes and dietary needs, ensuring a satisfying experience while
               promoting your health goals.
-            </p>
+            </p> */}
           </div>
 
           <div className=" flex  flex-col justify-center items-center xl:justify-start xl:items-start">
@@ -730,13 +731,13 @@ function Pref() {
               )}
             </ul>
 
-            <div className="flex gap-2">
+            <div className="flex gap-2 flex-col sm:flex-row sm:gap-2 flex-wrap items-center justify-center">
 
             <button
               onClick={handleGeneratePDF}
               className={`${
                 loader && "disabled:opacity-50 cursor-not-allowed"
-                } mt-4   py-2 px-6 box-border rounded-lg flex items-center justify-center bg-P-Green1 text-white shadow-[inset_4px_4px_8px_#2a322179] hover:shadow-[inset_0px_0px_0px_#2A3221] font-roboto font-medium text-base`}
+                } mt-4    py-2 px-6 box-border rounded-lg flex items-center justify-center bg-P-Green1 text-white shadow-[inset_4px_4px_8px_#2a322179] hover:shadow-[inset_0px_0px_0px_#2A3221] font-roboto font-medium text-base`}
               disabled={loader}
             >
               {loader ? "Generating..." : "Generate PDF"}
@@ -744,14 +745,14 @@ function Pref() {
             {isEditable ? (
               <button
               onClick={handleSubmit}
-              className="mt-4   py-2 px-14 box-border rounded-lg flex items-center justify-center bg-P-Green1 text-white shadow-[inset_4px_4px_8px_#2a322179] hover:shadow-[inset_0px_0px_0px_#2A3221] font-roboto font-medium text-base"
+              className="sm:mt-4   py-2 px-14 box-border rounded-lg flex items-center justify-center bg-P-Green1 text-white shadow-[inset_4px_4px_8px_#2a322179] hover:shadow-[inset_0px_0px_0px_#2A3221] font-roboto font-medium text-base"
               >
                 save
               </button>
             ) : (
               <button
               onClick={handleEditClick}
-              className="mt-4   py-2 px-14 box-border rounded-lg flex items-center justify-center bg-P-Green1 text-white shadow-[inset_4px_4px_8px_#2a322179] hover:shadow-[inset_0px_0px_0px_#2A3221] font-roboto font-medium text-base"
+              className="sm:mt-4   py-2 px-14 box-border rounded-lg flex items-center justify-center bg-P-Green1 text-white shadow-[inset_4px_4px_8px_#2a322179] hover:shadow-[inset_0px_0px_0px_#2A3221] font-roboto font-medium text-base"
               >
                 Edit
               </button>

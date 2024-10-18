@@ -53,8 +53,8 @@ app.config['JWT_SECRET_KEY'] = os.getenv('JWTSECRET')
 app.config['JWT_ACCESS_TOKEN_EXPIRES'] = timedelta(days=30) 
 jwt = JWTManager(app)
 # Enable Cross-Origin Resource Sharing (CORS) to allow requests from any origin
-CORS(app, resources={r"/*": {"origins": "*", "methods": ["GET", "POST", "DELETE", "PUT", "PATCH", "OPTIONS", "HEAD"]}})
-# CORS(app)
+# CORS(app, resources={r"/": {"origins": "*"}})
+CORS(app)
 api = Blueprint('api', __name__)
 from flask_migrate import Migrate
 
@@ -66,7 +66,7 @@ logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
 # Directly use the PostgreSQL connection string as in models.py
-app.config['SQLALCHEMY_DATABASE_URI'] =os.getenv('SQL')
+app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv('SQL')
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['SQLALCHEMY_POOL_SIZE'] = 10
 app.config['SQLALCHEMY_MAX_OVERFLOW'] = 20
@@ -121,8 +121,8 @@ def create_payment():
                 'quantity': 1,
             }],
             mode='subscription',
-            success_url='http://localhost:3000/welcome',
-            cancel_url='http://localhost:3000/',
+            success_url='https://www.gbmeals.com/welcome',
+            cancel_url='https://www.gbmeals.com/',
             subscription_data={
                 'trial_period_days': 30,
             },
@@ -174,7 +174,7 @@ def cancel_plan():
 
         # Update user's subscription status in the database
         user.subscription_status = 'inactive'
-        user.subscription_end_date = datetime.utcnow()
+        user.subscription_end_date = None
         db.session.commit()
 
         return jsonify({
@@ -226,7 +226,7 @@ def delete_card():
         # Update user's subscription status if they're on a free trial
         if user.subscription_status == 'trial':
             user.subscription_status = 'inactive'
-            user.subscription_end_date = datetime.utcnow()
+            user.subscription_end_date = None
             db.session.commit()
 
         message = 'Card deleted successfully.'
@@ -279,8 +279,8 @@ def update_card():
             payment_method_types=['card'],
             mode='setup',
             customer=customer.id,
-            success_url='http://localhost:3000/myaccount',
-            cancel_url='http://localhost:3000/myaccount',
+            success_url='https://www.gbmeals.com/',
+            cancel_url='https://www.gbmeals.com/',
         )
 
         return jsonify({'url': session.url})
@@ -324,12 +324,7 @@ def check_subscription():
     except Exception as e:
         logger.error(f"Error checking subscription status: {str(e)}", exc_info=True)
         return jsonify({"error": "An internal server error occurred. Please try again later."}), 500
-
-
-
 # temp route to check user details ..debugging...
-
-
 @app.route('/check-user/<email>', methods=['GET'])
 def check_user(email):
     user = User.query.filter_by(email=email).first()
@@ -612,6 +607,7 @@ def reset_password():
 
 
 
+
 @app.route('/initiate-delete-account', methods=['POST'])
 def initiate_delete_account():
     try:
@@ -700,6 +696,51 @@ def confirm_delete_account():
         logging.error(f"Error in confirming account deletion: {str(e)}")
         return jsonify({"error": str(e)}), 500
 
+
+@app.route('/deleteuser/<email>', methods=['DELETE'])
+def deleteuser(email):
+    try:
+        user = User.query.filter_by(email=email).first()
+        if not user:
+            return jsonify({"error": "User not found"}), 404
+
+        db.session.delete(user)
+        db.session.commit()
+
+        return jsonify({"message": "User deleted successfully"}), 200
+
+    except Exception as e:
+        logging.error('Error during user deletion: %s', str(e))
+        return jsonify({"error": str(e)}), 500
+
+@app.route('/adduser', methods=['POST'])
+def adduser():
+    try:
+        data = request.json
+        name = data.get('Your Name')
+        email = data.get('Email Address')
+        password = data.get('Password')
+        subscription_status = data.get('status')
+
+        
+        if not email or not password:
+            return jsonify({"error": "Invalid input: Name, email, and password are required."}), 400
+
+        existing_user = User.query.filter_by(email=email).first()
+        if existing_user:
+            return jsonify({"error": "User with this email already exists"}), 400
+
+        hashed_password = bcrypt.hashpw(password.encode('utf-8'), bcrypt.gensalt())
+
+        new_user = User(name=name, email=email, password=hashed_password.decode('utf-8'), subscription_status=subscription_status)
+        db.session.add(new_user)
+        db.session.commit()
+
+        return jsonify({"message": "User registered successfully", "id": new_user.id}), 201
+
+    except Exception as e:
+        logging.error('Error during signup: %s', str(e))
+        return jsonify({"error": str(e)}), 500
 
 
 @app.route('/submit', methods=['POST'])
@@ -969,33 +1010,6 @@ def insert_documents():
         logging.error('Error inserting document: %s', str(e))
         return jsonify({"error": str(e)}), 500
 
-# Route to show all user documents from the database
-# @app.route('/show', methods=['GET'])
-# def show_user_data():
-#     user_id = request.headers.get('Authorization')
-#     if not user_id:
-#         return jsonify({"error": "No user ID provided"}), 400
-
-#     try:
-#         user = User.query.get(int(user_id))
-#         if user:
-#             user_data = {
-#                 "id": user.id,
-#                 "name": user.name,
-#                 "email": user.email,
-#                 "phone": user.phone,
-#                 "subject": user.subject,
-#                 "subscription_status": user.subscription_status,
-#                 "subscription_end_date": user.subscription_end_date.isoformat() if user.subscription_end_date else None,
-#                 "free_plan_used": user.free_plan_used
-#             }
-#             # Note: We're not including the password field for security reasons
-#             return jsonify(user_data)
-#         else:
-#             return jsonify({"error": "User not found"}), 404
-#     except Exception as e:
-#         db.session.rollback()
-#         return jsonify({"error": str(e)}), 500
 
 @app.route('/show', methods=['GET'])
 def show_user_data():
@@ -1015,7 +1029,13 @@ def show_user_data():
                 "subject": user.subject,
                 "subscription_status": user.subscription_status,
                 "subscription_end_date": user.subscription_end_date.isoformat() if user.subscription_end_date else None,
-                "free_plan_used": user.free_plan_used
+                "free_plan_used": user.free_plan_used,
+                "preferred_meal": user.preferred_meal,  # Changed from "family members"
+                "dietary_restriction": user.dietary_restriction,  # Fixed typo
+                "food_allergy": user.food_allergy,
+                "servings": user.servings,
+                "dislikes": user.dislikes,
+                "total_calories": user.total_calories
             }
             # Note: We're not including the password field for security reasons
             return jsonify(user_data)
@@ -1025,57 +1045,94 @@ def show_user_data():
         db.session.rollback()
         return jsonify({"error": str(e)}), 500
 
+# update the data
+@app.route('/update', methods=['PUT'])
+def update_user_data():
+    user_id = request.headers.get('Authorization')
+    if not user_id:
+        return jsonify({"error": "No user ID provided"}), 400
 
-
-@app.route('/adduser', methods=['POST'])
-def adduser():
     try:
-        data = request.json
-        name = data.get('Your Name')
-        email = data.get('Email Address')
-        password = data.get('Password')
-        subscription_status = data.get('status')
-
-        
-        if not email or not password:
-            return jsonify({"error": "Invalid input: Name, email, and password are required."}), 400
-
-        existing_user = User.query.filter_by(email=email).first()
-        if existing_user:
-            return jsonify({"error": "User with this email already exists"}), 400
-
-        hashed_password = bcrypt.hashpw(password.encode('utf-8'), bcrypt.gensalt())
-
-        new_user = User(name=name, email=email, password=hashed_password.decode('utf-8'), subscription_status=subscription_status)
-        db.session.add(new_user)
-        db.session.commit()
-
-        return jsonify({"message": "User registered successfully", "id": new_user.id}), 201
-
-    except Exception as e:
-        logging.error('Error during signup: %s', str(e))
-        return jsonify({"error": str(e)}), 500
-
-
-@app.route('/deleteuser/<email>', methods=['DELETE'])
-def deleteuser(email):
-    try:
-        user = User.query.filter_by(email=email).first()
+        user = db.session.get(User, int(user_id))
         if not user:
             return jsonify({"error": "User not found"}), 404
 
-        db.session.delete(user)
+        data = request.json
+
+        # Update fields if they are present in the request
+        if 'name' in data:
+            user.name = data['name']
+        if 'email' in data:
+            user.email = data['email']
+        if 'phone' in data:
+            user.phone = data['phone']
+        if 'subject' in data:
+            user.subject = data['subject']
+        if 'subscription_status' in data:
+            user.subscription_status = data['subscription_status']
+        if 'subscription_end_date' in data:
+            user.subscription_end_date = datetime.strptime(data['subscription_end_date'], '%Y-%m-%d')
+        if 'free_plan_used' in data:
+            user.free_plan_used = data['free_plan_used']
+        if 'preferred_meal' in data:
+            user.preferred_meal = data['preferred_meal']
+        if 'dietary_restriction' in data:
+            user.dietary_restriction = data['dietary_restriction']
+        if 'food_allergy' in data:
+            user.food_allergy = data['food_allergy']
+        if 'servings' in data: 
+            user.servings = data['servings']
+        if 'dislikes' in data:
+            user.dislikes = data['dislikes']
+        if 'total_calories' in data:
+            user.total_calories = data['total_calories']
+
         db.session.commit()
 
-        return jsonify({"message": "User deleted successfully"}), 200
-
+        return jsonify({"message": "User data updated successfully"}), 200
     except Exception as e:
-        logging.error('Error during user deletion: %s', str(e))
+        db.session.rollback()
         return jsonify({"error": str(e)}), 500
 
+# insert food pref into db
+@app.route('/add_meal_preference', methods=['POST'])
+def add_meal_preference():
+    try:
+        # Extract data from the request
+        data = request.json
+        preferred_meal = data.get('preferred_meal')
+        dietary_restriction = data.get('dietary_restriction')
+        food_allergy = data.get('food_allergy')
+        servings = data.get('servings')
+        dislikes = data.get('dislikes')
+        total_calories = data.get('total_calories')
 
+        # Validate that the user ID is provided
+        user_id = data.get('user_id')
+        if not user_id:
+            return jsonify({"error": "User ID is required."}), 400
+        
+        # Fetch the user from the database
+        user = User.query.get(user_id)
+        if not user:
+            return jsonify({"error": "User not found."}), 404
 
+        # Update the user's meal preferences
+        user.preferred_meal = preferred_meal
+        user.dietary_restriction = dietary_restriction
+        user.food_allergy = food_allergy
+        user.servings = servings
+        user.dislikes = dislikes
+        user.total_calories = total_calories
 
+        # Commit the changes
+        db.session.commit()
+
+        return jsonify({"message": "Meal preferences updated successfully"}), 200
+
+    except Exception as e:
+        logging.error('Error updating meal preference: %s', str(e))
+        return jsonify({"error": str(e)}), 500
 
 
 @app.route('/signup', methods=['POST'])
@@ -1087,6 +1144,12 @@ def signup():
         password = data.get('Password')
         phone = data.get('Phone')
         subject = data.get('Subject')
+        preferred_meal = data.get('preferredMeal')
+        dietary_restriction = data.get('dietaryRestriction')
+        food_allergy = data.get('foodAllergy')
+        servings = data.get('servings')
+        dislikes = data.get('dislikes')
+        total_calories = data.get('totalCalories')
 
         if not name or not email or not password:
             return jsonify({"error": "Invalid input: Name, email, and password are required."}), 400
@@ -1097,7 +1160,19 @@ def signup():
 
         hashed_password = bcrypt.hashpw(password.encode('utf-8'), bcrypt.gensalt())
 
-        new_user = User(name=name, email=email, password=hashed_password.decode('utf-8'), phone=phone, subject=subject)
+        new_user = User(
+            name=name,
+            email=email,
+            password=hashed_password.decode('utf-8'),
+            phone=phone,
+            subject=subject,
+            preferred_meal=preferred_meal,
+            dietary_restriction=dietary_restriction,
+            food_allergy=food_allergy,
+            servings=servings,
+            dislikes=dislikes,
+            total_calories=total_calories
+        )
         db.session.add(new_user)
         db.session.commit()
 
@@ -1106,6 +1181,7 @@ def signup():
     except Exception as e:
         logging.error('Error during signup: %s', str(e))
         return jsonify({"error": str(e)}), 500
+
 
 # Admin credentials
 # Admin credentials
@@ -1146,7 +1222,7 @@ def login():
                 "name": "Admin",
                 "email": ADMIN_EMAIL,
                 "is_admin": True,
-                "redirect": "https://gbmeals.com/admin"
+                "redirect": "https://www.gbmeals.com/admin"
             }), 200
         
         # Find the user by email in the database
@@ -1183,49 +1259,6 @@ def protected():
     return jsonify(logged_in_as=current_user), 200
 
 
-# Route to send a PDF to a specified email address
-# @app.route('/send-pdf', methods=['POST'])
-# def send_pdf():
-#     data = request.json
-#     email = data.get('email')
-#     pdf_data = data.get('pdf')
-
-#     user = User.query.filter_by(email=email).first()
-
-#     if not user:
-#         return jsonify({'error': 'User not found'}), 404
-
-#     try:
-#         main_pdf_content = base64.b64decode(pdf_data['mainPDF'].split(',')[1])
-#         shopping_list_pdf_content = base64.b64decode(pdf_data['ShoppingListPdf'].split(',')[1])
-
-#         msg = MIMEMultipart()
-#         msg['From'] = SMTP_USER
-#         msg['To'] = email
-#         msg['Subject'] = "Your Meal Plan and Shopping List PDFs"
-
-#         # Attach main PDF
-#         main_pdf_part = MIMEApplication(main_pdf_content, Name="meal_plan.pdf")
-#         main_pdf_part['Content-Disposition'] = 'attachment; filename="meal_plan.pdf"'
-#         msg.attach(main_pdf_part)
-
-#         # Attach shopping list PDF
-#         shopping_list_pdf_part = MIMEApplication(shopping_list_pdf_content, Name="shopping_list.pdf")
-#         shopping_list_pdf_part['Content-Disposition'] = 'attachment; filename="shopping_list.pdf"'
-#         msg.attach(shopping_list_pdf_part)
-
-#         # Add a text body to the email
-#         text = "Please find attached your meal plan and shopping list PDFs."
-#         msg.attach(MIMEText(text, 'plain'))
-
-#         with smtplib.SMTP_SSL(SMTP_SERVER, SMTP_PORT) as server:
-#             server.login(SMTP_USER, SMTP_PASS)
-#             server.sendmail(SMTP_USER, email, msg.as_string())
-
-#         return jsonify({"message": "PDFs sent successfully"}), 200
-#     except Exception as e:
-#         logging.error('Error sending PDFs: %s', str(e))
-#         return jsonify({"error": str(e)}), 500
 
 @app.route('/send-pdf', methods=['POST'])
 def send_pdf():

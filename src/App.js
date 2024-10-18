@@ -34,7 +34,7 @@ function App() {
     // Check localStorage for the "user" object
     const user = localStorage.getItem("user");
     const admin = localStorage.getItem("admin");
-    console.log(admin)
+    // console.log(admin)
     if(admin){
       setisAdmin(true)
     }else{
