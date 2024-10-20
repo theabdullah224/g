@@ -95,7 +95,7 @@ function Login() {
                         <div className='flex flex-wrap mt-4 gap-2 flex-col items-center   sm:items-start'>
                             <h1 className='text-2xl border-b-8 border-S-Orange leading-none font-bold text-white'>Log In</h1>
                             <form action=""  onSubmit={(e) => {
-    e.preventDefault(); // Prevents the page from reloading
+   // Prevents the page from reloading
     handleLogin(); // Calls your login function
   }} className='flex flex-wrap mt-4 gap-2 flex-col items-center   sm:items-start'>
 
