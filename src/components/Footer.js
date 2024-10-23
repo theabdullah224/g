@@ -52,10 +52,10 @@ function Footer() {
           <img src={location} alt="Location" className="location mt-2" />
           <p className='footerp text-md font-bold text-Text2'>15 Neptune Ct, Vanguard Way, Cardiff, CF24 5PJ</p>
         </div>
-        <div>
+        {/* <div>
           <img src={call} alt="Phone" className="location" />
           <p className='footerp text-md font-bold text-Text2'>1800 123 4567</p>
-        </div>
+        </div> */}
         <div>
           <img src={mail} alt="Email" className="location" />
           <p className='footerp text-md font-bold text-Text2'>team@gbmeals.com</p>

@@ -120,7 +120,7 @@ function Pref() {
   const [currentCardIndex, setCurrentCardIndex] = useState(0);
   const [isSubscribed, setIsSubscribed] = useState(false);
   const [selectedFamilyMembers, setSelectedFamilyMembers] = useState("1");
-  const [isEditable, setIsEditable] = useState(false);
+  const [isEditable, setIsEditable] = useState(true);
   const [colories, setcolories] = useState("");
   const [servingss, setservingss] = useState("");
   const [familymember, setfamilymember] = useState("1");
@@ -171,6 +171,15 @@ function Pref() {
     mealPlan: { open: false, selected: parsedUserData?.dietary_restriction },
     familyMembers: { open: false, selected: parsedUserData?.preferred_meal },
   });
+  const handleInputChange = (menu, value) => {
+    setMenuStates({
+      ...menuStates,
+      [menu]: {
+        ...menuStates[menu],
+        inputValue: value // Update the input field value
+      }
+    });
+  };
   const renderMenuItem = (menu, title, placeholder, options) => (
     <li className="relative ">
       <span className="text-base font-roboto font-bold">{title}</span>
@@ -187,7 +196,17 @@ function Pref() {
         </span>
       </button>
       {menuStates[menu].open && (
-        <ul className="absolute z-50 left-0 mt-2 bg-white border border-gray-300 w-full">
+        <ul className="absolute z-50 left-0 mt-2 bg-white border border-gray-300 w-full px-2 py-2">
+          {title === "Tell us about your food allergy" &&(
+           <input
+           type="text"
+           value={menuStates[menu].inputValue || ""}
+           onChange={(e) => handleInputChange(menu, e.target.value)} 
+           onBlur={() => handleOptionSelect(menu, menuStates[menu].inputValue)}  // Auto-select on blur (when input loses focus)
+           className="w-full border-2 py-2 text-xs sm:text-sm rounded-md sm:rounded-lg px-2"
+           placeholder="Tell us about your food allergy"
+         />
+          )}
           {options.map((option) => (
             <li key={option}>
               <span
@@ -208,7 +227,7 @@ function Pref() {
     const user = await localStorage.getItem("user");
     const parsedUser = JSON.parse(user); // Convert string to object
     const userId = parsedUser.user_id;
-    handleEditClick();
+    // handleEditClick();
 
     try {
       const dataToSend = {
@@ -236,7 +255,7 @@ function Pref() {
 
         // setMessage(result.message);
         setError(""); // Clear any previous errors
-
+        
         // Update local state or context with the new values
         // For example:
         // updateUserPreferences(dataToSend);
@@ -659,6 +678,7 @@ function Pref() {
                 "Tell us about your food allergy",
                 menuStates.allergy.selected ||
                   "Enter/select allergy if you have any",
+                  
                 [
                   "Peanuts",
                   "Gluten",
@@ -681,7 +701,7 @@ function Pref() {
                 "mealPlan",
                 "Choose your preferred meal plan",
                 menuStates.mealPlan.selected ||
-                  "Enter/select preferred meal plan",
+                  "select preferred meal plan",
                 [
                   "Low crab (promotes weight loss)",
                   "Balanced diet ( Mediterranean diet)",
@@ -690,7 +710,7 @@ function Pref() {
                   "Vegetarian",
                 ]
               )}
-              {renderMenuItem(
+              {/* {renderMenuItem(
                 "familyMembers",
                 "Choose your Family Members",
                 menuStates.familyMembers.selected ||
@@ -716,7 +736,7 @@ function Pref() {
                   "18",
                   "19",
                 ]
-              )}
+              )} */}
               {renderMenuItem(
                 "preference",
                 "Choose Your Preferred Calories",

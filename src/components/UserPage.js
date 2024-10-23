@@ -729,8 +729,8 @@ function UserPage() {
 
         <div
           id="sidebarid"
-          className={`bg-white absolute shadow-lg transition-all duration-300 overflow-y-auto h-screen ${
-            isOpen ? "w-64" : "w-16"
+          className={`bg-white absolute shadow-lg transition-all duration-300 overflow-y-auto h-screen z-[999999999999999999999] ${
+            isOpen ? "w-64" : "w-12"
           } lg:w-[20rem]`}
         >
           <div className="flex items-center justify-between px-4">
@@ -880,6 +880,7 @@ onClick={handleEmailEditClick}
               text="Manage Subscription"
               onClick={() => {
                 setActiveTab("payment");
+                setIsOpen(false)
                 setIsEditable(false);
               }}
               isActive={activeTab === "payment"}
@@ -899,6 +900,7 @@ onClick={handleEmailEditClick}
               text="Resource Center"
               onClick={() => {
                 setActiveTab("pdf");
+                setIsOpen(false)
                 setIsEditable(false);
               }}
               isActive={activeTab === "pdf"}
@@ -954,6 +956,7 @@ onClick={handleEmailEditClick}
               text="Manage Preferences"
               onClick={() => {
                 setActiveTab("pdfgenerate");
+                setIsOpen(false)
                 setIsEditable(false);
               }}
               isActive={activeTab === "pdfgenerate"}
@@ -973,6 +976,7 @@ onClick={handleEmailEditClick}
               text="Contact Us"
               onClick={() => {
                 setActiveTab("contact");
+                setIsOpen(false)
                 setIsEditable(false);
               }}
               isActive={activeTab === "contact"}
@@ -992,6 +996,7 @@ onClick={handleEmailEditClick}
               text="Delete Account"
               onClick={() => {
                 setActiveTab("account");
+                setIsOpen(false)
                 setIsEditable(false);
               }}
               isActive={activeTab === "account"}

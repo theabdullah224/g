@@ -177,7 +177,7 @@ const cards = [
         </ul></div>
   `,
       },
-     
+
       {
         type: "radio",
         name: "dietaryRestrictions",
@@ -411,7 +411,8 @@ const CardNavigator = ({ setLoading }) => {
   const [loader, setLoader] = useState(false);
   const [selectedPreferredMeal, setSelectedPreferredMeal] = useState("");
   const [selectedFoodAllergies, setSelectedFoodAllergies] = useState([]);
-  const [selecteddietaryRestrictions, setSelecteddietaryRestrictions] =useState([]);
+  const [selecteddietaryRestrictions, setSelecteddietaryRestrictions] =
+    useState([]);
   const [selecteddislike, setSelecteddislike] = useState([]);
   const [selectedServings, setSelectedServings] = useState("");
   const [currentCardIndex, setCurrentCardIndex] = useState(0);
@@ -420,7 +421,7 @@ const CardNavigator = ({ setLoading }) => {
   const { isLoggedIn, setIsLoggedIn } = useStore();
   const [hasGeneratedPDF, setHasGeneratedPDF] = useState(false);
   const [isSubscribed, setIsSubscribed] = useState(false);
-  
+
   const [dietrypopup, setdietrypopup] = useState(false);
   const [ispopupOpen3, setIspopupOpen3] = useState(false);
   const popupRef = useRef(null);
@@ -494,7 +495,6 @@ const CardNavigator = ({ setLoading }) => {
     "Your Name": "",
     "Email Address": "",
     Password: "",
-
   });
 
   // State variables for card 7
@@ -548,12 +548,12 @@ const CardNavigator = ({ setLoading }) => {
       // Prepare the form data
       const formData = {
         ...card6Values,
-        totalCalories:selectedPreferredMeal,
-        dietaryRestriction:selecteddietaryRestrictions,
-        foodAllergy:selectedFoodAllergies,
-        servings:selectedServings,
-        dislikes:selecteddislike,
-        preferredMeal:`${familyMembers} members`
+        totalCalories: selectedPreferredMeal,
+        dietaryRestriction: selecteddietaryRestrictions,
+        foodAllergy: selectedFoodAllergies,
+        servings: selectedServings,
+        dislikes: selecteddislike,
+        preferredMeal: `${familyMembers} members`,
       };
 
       // Signup request
@@ -619,7 +619,6 @@ const CardNavigator = ({ setLoading }) => {
   localStorage.setItem("preferredmeal", selectedPreferredMeal);
 
   const servings = selectedServings;
-
 
   const generateAndSendPDF = async (email) => {
     setLoader(true);
@@ -1253,7 +1252,7 @@ const CardNavigator = ({ setLoading }) => {
           <div>
             <div
               key={index}
-              className={`radio-div relative flex rounded-md group items-center cursor-pointer border-[1px] border-S-Orange text-white flex-col justify-center h-36 w-36 ${
+              className={`radio-div relative flex rounded-md group items-center cursor-pointer border-[1px] border-S-Orange text-white flex-col justify-center w-20 h-20 sm:h-36 sm:w-36 ${
                 isChecked ? "selected" : ""
               }`}
               onClick={() =>
@@ -1266,26 +1265,26 @@ const CardNavigator = ({ setLoading }) => {
                 })
               }
             >
-              <div className="border-[1px] h-7 w-7 flex items-center justify-center rounded-full backdrop-blur-lg absolute -top-2 -right-2">
+              <div className="border-[1px]  w-3 sm:h-7 h-3 sm:w-7 flex items-center justify-center rounded-full backdrop-blur-lg absolute -top-1 -right-1  sm:-top-2 sm:-right-2">
                 <div className="w-[14px] rounded-full h-[1px] bg-white"></div>
               </div>
-              <img
+              {/* <img
                 src={arrow}
                 className="mb-2 text-white absolute top-2 select-none hidden group-hover:block"
                 alt=""
-              />
+              /> */}
               {element.image && (
                 <img
-                  className=" mb-2 w-10 select-none"
+                  className=" mb-2 w-5 sm:w-10 select-none"
                   src={element.image}
                   alt={element.label}
                 />
               )}
-              <span className="text-white text-md select-none text-center px-2">
+              <span className="text-white text-xs sm:text-md select-none text-center px-2 ">
                 {element.label}
               </span>
               {isChecked && (
-                <div className="absolute h-7 w-7 flex z-40 items-center justify-center select-none  bg-[#32B200] rounded-full  -top-2 -right-2">
+                <div className="absolute w-3 sm:h-7 h-3 sm:w-7 flex z-40 items-center justify-center select-none  bg-[#32B200] rounded-full -top-1 -right-1  sm:-top-2 sm:-right-2">
                   <img
                     src={tickIcon}
                     alt="Selected"
@@ -1316,15 +1315,14 @@ const CardNavigator = ({ setLoading }) => {
         return (
           <div key={index} className="formElement  ">
             <form action="" onSubmit={handleSignUp}>
-
-            <input
-              type={element.type}
-              placeholder={element.placeholder}
-              value={value}
-              onChange={handleChange}
-              className="border-2 border-white py-2   px-2 bg-transparent rounded-lg p-2 w-[19rem]   sm:w-[32rem]  placeholder-white text-white "
+              <input
+                type={element.type}
+                placeholder={element.placeholder}
+                value={value}
+                onChange={handleChange}
+                className="border-2 border-white py-2   px-2 bg-transparent rounded-lg p-2 w-[19rem]   sm:w-[32rem]  placeholder-white text-white "
               />
-              </form>
+            </form>
           </div>
         );
       default:
@@ -1355,7 +1353,7 @@ const CardNavigator = ({ setLoading }) => {
 
   return (
     <div
-      className="w-[100vw] min-h-[834px] flex flex-col items-center justify-center p-6"
+      className="w-[100vw] min-h-screen flex flex-col items-center justify-center p-6"
       style={{
         backgroundImage: `url(${cardbgimg})`,
         backgroundPosition: "center",
@@ -1370,31 +1368,41 @@ const CardNavigator = ({ setLoading }) => {
 
       {!loader && (
         <div className="relative container max-w-[32rem] capitalize ">
-          <h4 className="text-2xl border-b-8 border-S-Orange leading-none font-bold inline-block text-white">
+          <h4 className="text-xl sm:text-2xl border-b-8 border-S-Orange leading-none font-bold inline-block text-white">
             {currentCard.subtitle}
           </h4>
-          <h2 className="font-bold text-3xl text-white">{currentCard.title}</h2>
-          <p className="cardp text-white text-lg mt-4 ">
+          <h2 className="font-bold text-xl sm:text-3xl text-white">{currentCard.title}</h2>
+          <p className="cardp text-white text-sm sm:text-lg mt-4 ">
             {currentCard.description}
           </p>
 
           {/* ---------------popup info */}
           {cards[0].elements[0].label === dietrypopup && (
             <div
-            ref={popupRef}
-             class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-50 backdrop-blur-xl rounded-md select-none max-w-[20rem] w-full max-h-[20rem] h-full overflow-y-scroll p-2 text-white scroll-smooth">
-
+              ref={popupRef}
+              class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-50 backdrop-blur-xl rounded-md select-none max-w-[20rem] w-full max-h-[20rem] h-full overflow-y-scroll p-2 text-white scroll-smooth"
+            >
               <div className="p-2">
-              <b className="mb-4">Balanced Diet:</b>
-              <ul className="list-disc ml-5">
-                <li>A balanced diet inspired by Mediterranean and centenarian eating habits significantly enhances health. </li>
-                <li>Such a diet focuses on a variety of fruits, vegetables, and whole grains, which naturally helps reduce cholesterol levels and lower the risk of chronic conditions.</li>
-                <li> It's a sustainable, fulfilling way to eat that not only extends your lifespan but also respects the natural environment.</li>
-              </ul>
+                <b className="mb-4">Balanced Diet:</b>
+                <ul className="list-disc ml-5">
+                  <li>
+                    A balanced diet inspired by Mediterranean and centenarian
+                    eating habits significantly enhances health.{" "}
+                  </li>
+                  <li>
+                    Such a diet focuses on a variety of fruits, vegetables, and
+                    whole grains, which naturally helps reduce cholesterol
+                    levels and lower the risk of chronic conditions.
+                  </li>
+                  <li>
+                    {" "}
+                    It's a sustainable, fulfilling way to eat that not only
+                    extends your lifespan but also respects the natural
+                    environment.
+                  </li>
+                </ul>
               </div>
-             
-          </div>
-          
+            </div>
           )}
           {cards[0].elements[1].label === dietrypopup && (
             <div
@@ -1564,14 +1572,14 @@ const CardNavigator = ({ setLoading }) => {
               {currentCard.section2 && currentCard.section2.map(renderSection)}
             </div>
             {currentCard.elements && (
-              <div className="flex flex-wrap gap-7  ">
+              <div className="flex flex-wrap gap-3 sm:gap-7 ">
                 {currentCard.elements.map((element, index) =>
                   renderElement(element, index)
                 )}
 
                 {/* {currentCardIndex === 4 && (
                   <>
-                    <div className=" relative select-none flex rounded-md  group items-center cursor-pointer border-[1px] border-S-Orange text-white flex-col justify-center h-36 w-36 ">
+                    <div className=" relative select-none flex rounded-md  group items-center cursor-pointer border-[1px] border-S-Orange text-white flex-col justify-center w-20 h-20 sm:h-36 sm:w-36 ">
                       <img src={plus} alt="" />
                       <p className="select-none">Add</p>
                       
@@ -1582,25 +1590,34 @@ const CardNavigator = ({ setLoading }) => {
                   <div className="relative">
                     <div
                       onClick={() => setIspopupOpen3(true)}
-                      className="relative select-none flex rounded-md group items-center cursor-pointer border-[1px] border-S-Orange text-white flex-col justify-center h-36 w-36"
+                      className="relative select-none flex rounded-md group items-center cursor-pointer border-[1px] border-S-Orange text-white flex-col justify-center w-20 h-20 sm:h-36 sm:w-36"
                     >
-                      {selectedPreferredMeal === "Recomended (2000 - 2500 calories)" ? "" : selectedPreferredMeal  && (
-                          <div className="absolute h-7 w-7 flex z-40 items-center justify-center select-none  bg-[#32B200] rounded-full  -top-2 -right-2">
-                          <img
-                            src={tickIcon}
-                            alt="Selected"
-                            className="tick-icon select-none "
-                          />
-                        </div>
-                      )}
-                      
-                   
-                      <img src={plus} alt="" />
-                      <p className="select-none">Add</p>
-                      {!selectedPreferredMeal || selectedPreferredMeal === "Recomended (2000 - 2500 calories)" ? "": `${selectedPreferredMeal} calories`}
+                      {selectedPreferredMeal ===
+                      "Recomended (2000 - 2500 calories)"
+                        ? ""
+                        : selectedPreferredMeal && (
+                            <div className="absolute  w-3 sm:h-7 h-3 sm:w-7 flex z-40 items-center justify-center select-none  bg-[#32B200] rounded-full  -top-1 -right-1  sm:-top-2 sm:-right-2">
+                              <img
+                                src={tickIcon}
+                                alt="Selected"
+                                className="tick-icon select-none w-3 sm:h-7 h-3 sm:w-7 "
+                              />
+                            </div>
+                          )}
 
-
-
+                      <img
+                        src={plus}
+                        alt=""
+                        className="w-5 sm:h-7 h-5 sm:w-7 "
+                      />
+                      <p className="select-none text-xs sm:text-base">Add</p>
+                      <p className="text-xs sm:text-sm text-center">
+                        {!selectedPreferredMeal ||
+                        selectedPreferredMeal ===
+                          "Recomended (2000 - 2500 calories)"
+                          ? ""
+                          : `${selectedPreferredMeal} calories`}
+                      </p>
                     </div>
 
                     {ispopupOpen3 && (
@@ -1640,52 +1657,70 @@ const CardNavigator = ({ setLoading }) => {
                     )}
                   </div>
                 )}
+
+
+
+
+
+
+
+                
                 {currentCardIndex === 1 && (
                   <div className="relative">
                     <div
                       onClick={() => setIspopupOpen(true)}
-                      className="relative select-none flex rounded-md group items-center cursor-pointer border-[1px] border-S-Orange text-white flex-col justify-center h-36 w-36"
+                      className="relative select-none flex rounded-md group items-center cursor-pointer border-[1px] border-S-Orange text-white flex-col justify-center  w-20 h-20 sm:h-36 sm:w-36"
                     >
-
-                      {(selectedServings === "1 Serving" ||selectedServings === "2 Servings" ||selectedServings === "3 Servings" || selectedServings === "4 Servings" || selectedServings === "")   ? "": (
+                      {selectedServings === "1 Serving" ||
+                      selectedServings === "2 Servings" ||
+                      selectedServings === "3 Servings" ||
+                      selectedServings === "4 Servings" ||
+                      selectedServings === "" ? (
+                        ""
+                      ) : (
                         <>
-                        
-                        
-                      <div className="absolute h-7 w-7 flex z-40 items-center justify-center select-none  bg-[#32B200] rounded-full  -top-2 -right-2">
-                          <img
-                            src={tickIcon}
-                            alt="Selected"
-                            className="tick-icon select-none "
-                          />
-                        </div>
+                          <div className="absolute  w-3 sm:h-7 h-3 sm:w-7 flex z-40 items-center justify-center select-none  bg-[#32B200] rounded-full  -top-1 -right-1  sm:-top-2 sm:-right-2">
+                            <img
+                              src={tickIcon}
+                              alt="Selected"
+                              className="tick-icon select-none "
+                            />
+                          </div>
                         </>
                       )}
 
-
-                      <img src={plus} alt="" />
-                      <p className="select-none">Add</p>
-                      {(selectedServings === "1 Serving" ||selectedServings === "2 Servings" ||selectedServings === "3 Servings" || selectedServings === "4 Servings")   ? "": (
+                      <img
+                        src={plus}
+                        alt=""
+                        className="w-5 sm:h-7 h-5 sm:w-7 "
+                      />
+                      <p className="select-none text-xs sm:text-base">Add</p>
+                      {selectedServings === "1 Serving" ||
+                      selectedServings === "2 Servings" ||
+                      selectedServings === "3 Servings" ||
+                      selectedServings === "4 Servings" || selectedServings === "" ? (
+                        ""
+                      ) : (
                         <>
-                        
-                        <p className="">
-                          {selectedServings}
-                          
-                          <br />
-                        </p>
+                          <p className="text-xs sm:text-sm">
+                            {selectedServings || ""}
+
+                            <br />
+                          </p>
                         </>
                       )}
                       {familyMembers > 1 && (
                         <>
-                         <div className="absolute h-7 w-7 flex z-40 items-center justify-center select-none  bg-[#32B200] rounded-full  -top-2 -right-2">
-                          <img
-                            src={tickIcon}
-                            alt="Selected"
-                            className="tick-icon select-none "
-                          />
-                        </div>
-                        <p>
-                        {familyMembers} Members
-                        </p>
+                          <div className="absolute  w-3 sm:h-7 h-3 sm:w-7 flex z-40 items-center justify-center select-none  bg-[#32B200] rounded-full  -top-1 -right-1  sm:-top-2 sm:-right-2">
+                            <img
+                              src={tickIcon}
+                              alt="Selected"
+                              className="tick-icon select-none "
+                            />
+                          </div>
+                          <p className="text-xs sm:text-sm">
+                            {familyMembers} Members
+                          </p>
                         </>
                       )}
                     </div>
@@ -1740,7 +1775,6 @@ const CardNavigator = ({ setLoading }) => {
                               }
                               className="mt-2 w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-Text1"
                             >
-                              
                               {[...Array(19).keys()].map((num) => (
                                 <option key={num} value={num + 2}>
                                   {num + 2}
@@ -1769,22 +1803,26 @@ const CardNavigator = ({ setLoading }) => {
                     <div className="relative">
                       <div
                         onClick={() => setIsOpen(true)}
-                        className="relative select-none flex rounded-md group items-center cursor-pointer border-[1px] border-S-Orange text-white flex-col justify-center h-36 w-36"
+                        className="relative select-none flex rounded-md group items-center cursor-pointer border-[1px] border-S-Orange text-white flex-col justify-center w-20 h-20 sm:h-36 sm:w-36"
                       >
-                        <img src={plus} alt="" />
-                        <p className="select-none">Add</p>
+                        <img
+                          src={plus}
+                          alt=""
+                          className="w-5 sm:h-7 h-5 sm:w-7 "
+                        />
+                        <p className="select-none text-xs sm:text-base">Add</p>
                         {selectedAllergies.length > 0 && (
                           <>
-                           <div className="absolute h-7 w-7 flex z-40 items-center justify-center select-none  bg-[#32B200] rounded-full  -top-2 -right-2">
-                          <img
-                            src={tickIcon}
-                            alt="Selected"
-                            className="tick-icon select-none "
-                          />
-                        </div>
-                          <p className="absolute bottom-2 text-sm">
-                            {selectedAllergies.length} selected
-                          </p>
+                            <div className="absolute  w-3 sm:h-7 h-3 sm:w-7 flex z-40 items-center justify-center select-none  bg-[#32B200] rounded-full  -top-1 -right-1  sm:-top-2 sm:-right-2">
+                              <img
+                                src={tickIcon}
+                                alt="Selected"
+                                className="tick-icon select-none "
+                              />
+                            </div>
+                            <p className="absolute bottom-2 text-sm">
+                              {selectedAllergies.length} selected
+                            </p>
                           </>
                         )}
                       </div>
@@ -1846,7 +1884,7 @@ const CardNavigator = ({ setLoading }) => {
           <div className="buttonContainer1">
             {currentCardIndex === 0 && (
               <button
-                className="py-2 mt-4 select-none px-10 w-[100px] sm:w-[200px] box-border rounded-lg flex items-center justify-center bg-white text-P-Green1 shadow-[inset_4px_4px_8px_#2a322179] hover:shadow-[inset_0px_0px_0px_#2A3221] font-roboto font-medium text-base"
+                className="py-2 mt-4 select-none px-10 w-[100px] sm:w-[200px] box-border rounded-md sm:rounded-lg flex items-center justify-center bg-white text-P-Green1 shadow-[inset_4px_4px_8px_#2a322179] hover:shadow-[inset_0px_0px_0px_#2A3221] font-roboto font-medium text-xs sm:text-base"
                 onClick={handleNext}
               >
                 Next
@@ -1856,15 +1894,14 @@ const CardNavigator = ({ setLoading }) => {
             {currentCardIndex > 0 && currentCardIndex < 4 && (
               <>
                 <div className="flex flex-wrap gap-2 mt-4">
-                  
                   <button
-                    className="py-1 sm:py-2 px-4 sm:px-12 w-[100px] sm:w-[200px] select-none box-border rounded-lg flex items-center justify-center bg-transparent text-P-white border-2 border-white  hover:cursor-pointer text-white font-roboto font-medium text-base"
+                    className="py-1 sm:py-2 px-4 sm:px-12 w-[100px] sm:w-[200px] select-none box-border rounded-md sm:rounded-lg flex items-center justify-center bg-transparent text-P-white border-2 border-white  hover:cursor-pointer text-white font-roboto font-medium text-xs sm:text-base"
                     onClick={handleBack}
                   >
                     Back
                   </button>
                   <button
-                    className="py-2 px-10 select-none w-[100px] sm:w-[200px] box-border rounded-lg flex items-center justify-center bg-white text-P-Green1 shadow-[inset_4px_4px_8px_#2a322179] hover:shadow-[inset_0px_0px_0px_#2A3221] font-roboto font-medium text-base"
+                    className="py-2 px-10 select-none w-[100px] sm:w-[200px] box-border rounded-md sm:rounded-lg flex items-center justify-center bg-white text-P-Green1 shadow-[inset_4px_4px_8px_#2a322179] hover:shadow-[inset_0px_0px_0px_#2A3221] font-roboto font-medium text-xs sm:text-base"
                     onClick={handleNext}
                   >
                     Next
@@ -1877,13 +1914,13 @@ const CardNavigator = ({ setLoading }) => {
                 <>
                   <div className="flex gap-2 flex-wrap  w-fit items-center mt-4">
                     <button
-                      className="py-2 select-none  px-10 w-[100px] sm:w-[200px] box-border rounded-lg flex items-center justify-center bg-white text-P-Green1 shadow-[inset_4px_4px_8px_#2a322179] hover:shadow-[inset_0px_0px_0px_#2A3221] font-roboto font-medium text-base"
+                      className="py-2 select-none  px-10 w-[100px] sm:w-[200px] box-border rounded-md sm:rounded-lg flex items-center justify-center bg-white text-P-Green1 shadow-[inset_4px_4px_8px_#2a322179] hover:shadow-[inset_0px_0px_0px_#2A3221] font-roboto font-medium text-xs sm:text-base"
                       onClick={handleGeneratePDF}
                     >
                       Generate PDF
                     </button>
                     <button
-                      className="py-1 sm:py-2 px-4 sm:px-12 w-[100px] sm:w-[200px] select-none box-border rounded-lg flex items-center justify-center bg-transparent text-P-white border-2 border-white  hover:cursor-pointer text-white font-roboto font-medium text-base"
+                      className="py-1 sm:py-2 px-4 sm:px-12 w-[100px] sm:w-[200px] select-none box-border rounded-md sm:rounded-lg flex items-center justify-center bg-transparent text-P-white border-2 border-white  hover:cursor-pointer text-white font-roboto font-medium text-xs sm:text-base"
                       onClick={handleBack}
                     >
                       Back
@@ -1893,15 +1930,14 @@ const CardNavigator = ({ setLoading }) => {
               ) : (
                 <>
                   <div className="flex flex-wrap gap-2 mt-4">
-                    
                     <button
-                      className="py-2 px-4 sm:px-12 select-none w-[100px] sm:w-[200px] box-border rounded-lg flex items-center justify-center bg-transparent text-P-white border-2 border-white hover:cursor-pointer text-white font-roboto font-medium text-base"
+                      className="py-2 px-4 sm:px-12 select-none w-[100px] sm:w-[200px] box-border rounded-md sm:rounded-lg flex items-center justify-center bg-transparent text-P-white border-2 border-white hover:cursor-pointer text-white font-roboto font-medium text-xs sm:text-base"
                       onClick={handleBack}
                     >
                       Back
                     </button>
                     <button
-                      className="py-2 px-10 select-none w-[100px] sm:w-[200px] box-border rounded-lg flex items-center justify-center bg-white text-P-Green1 shadow-[inset_4px_4px_8px_#2a322179] hover:shadow-[inset_0px_0px_0px_#2A3221] font-roboto font-medium text-base"
+                      className="py-2 px-10 select-none w-[100px] sm:w-[200px] box-border rounded-md sm:rounded-lg flex items-center justify-center bg-white text-P-Green1 shadow-[inset_4px_4px_8px_#2a322179] hover:shadow-[inset_0px_0px_0px_#2A3221] font-roboto font-medium text-xs sm:text-base"
                       onClick={handleNext}
                     >
                       Next
@@ -1915,16 +1951,15 @@ const CardNavigator = ({ setLoading }) => {
                 <div className="flex flex-col flex-wrap mt-4 gap-2 ">
                   {eror && <p className="text-red-500 ">{eror}</p>}
                   <div className="flex gap-2 flex-wrap">
-                   
                     <button
-                      className="py-[1px] sm:py-2 px-4 sm:px-12 w-[100px] sm:w-[200px] select-none box-border rounded-lg flex items-center justify-center bg-transparent text-P-white border-2 border-white  hover:cursor-pointer text-white font-roboto font-medium text-base"
+                      className="py-[1px] sm:py-2 px-4 sm:px-12 w-[100px] sm:w-[200px] select-none box-border rounded-md sm:rounded-lg flex items-center justify-center bg-transparent text-P-white border-2 border-white  hover:cursor-pointer text-white font-roboto font-medium text-xs sm:text-base"
                       onClick={handleBack}
                     >
                       Back
                     </button>
                     <button
-                      type='submit'
-                      className=" py-2 px-10 select-none w-[100px] sm:w-[200px] box-border rounded-lg flex items-center justify-center bg-white text-P-Green1 shadow-[inset_4px_4px_8px_#2a322179] hover:shadow-[inset_0px_0px_0px_#2A3221] font-roboto font-medium text-base"
+                      type="submit"
+                      className=" py-2 px-10 select-none w-[100px] sm:w-[200px] box-border rounded-md sm:rounded-lg flex items-center justify-center bg-white text-P-Green1 shadow-[inset_4px_4px_8px_#2a322179] hover:shadow-[inset_0px_0px_0px_#2A3221] font-roboto font-medium text-xs sm:text-base"
                       onClick={handleSignUp}
                     >
                       Sign&nbsp;Up

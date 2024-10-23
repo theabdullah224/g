@@ -37,23 +37,23 @@ function Plans() {
   return (
     <div id='plan'>
       <Header/>
-      <FrontPage
+      {/* <FrontPage
         title="Choose Your Plan"
         description="Select the meal plan that suits your dietary needs and preferences."
         bgimg={Plansimg}
         display="none"
         btndisplay="none"
-      />
+      /> */}
       
       <div id='form'>
         <Form/> {/* card component */}
       </div>
-      <Cta
+      {/* <Cta
         title="Still have Questions ?"
         description="Feel free to reach out to us."
       />
       <Footer/>
-      <Copyright/>
+      <Copyright/> */}
     </div>
   )
 }

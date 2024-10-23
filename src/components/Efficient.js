@@ -149,7 +149,7 @@ const PricingCard = () => {
                           >
                             <path d="M256 0C114.6 0 0 114.6 0 256s114.6 256 256 256s256-114.6 256-256S397.4 0 256 0zM371.8 211.8l-128 128C238.3 345.3 231.2 348 224 348s-14.34-2.719-19.81-8.188l-64-64c-10.91-10.94-10.91-28.69 0-39.63c10.94-10.94 28.69-10.94 39.63 0L224 280.4l108.2-108.2c10.94-10.94 28.69-10.94 39.63 0C382.7 183.1 382.7 200.9 371.8 211.8z"></path>
                           </svg>
-                          Start After 30 Days
+                          Starts After 30 Days
                         </li>
                         <li className="flex items-center text-black">
                           <svg
@@ -242,7 +242,7 @@ const PricingCard = () => {
                           >
                             <path d="M256 0C114.6 0 0 114.6 0 256s114.6 256 256 256s256-114.6 256-256S397.4 0 256 0zM371.8 211.8l-128 128C238.3 345.3 231.2 348 224 348s-14.34-2.719-19.81-8.188l-64-64c-10.91-10.94-10.91-28.69 0-39.63c10.94-10.94 28.69-10.94 39.63 0L224 280.4l108.2-108.2c10.94-10.94 28.69-10.94 39.63 0C382.7 183.1 382.7 200.9 371.8 211.8z"></path>
                           </svg>
-                          Start After 30 Days
+                          Starts After 30 Days
                         </li>
                         <li className="flex items-center text-black">
                           <svg
@@ -381,7 +381,7 @@ const PricingCard = () => {
                         onClick={() => buyFunction("pro")}
                         className="w-full py-2 px-4 rounded-lg flex items-center justify-center bg-P-Green1 text-white shadow-[inset_4px_4px_8px_#2a322179] hover:shadow-[inset_0px_0px_0px_#2A3221] font-roboto font-medium text-base"
                       >
-                        {isLoggedIn ? "Upgrade" : "Start After 30 Days"}
+                        {isLoggedIn ? "Upgrade" : "Starts After 30 Days"}
                       </button>
                     </div>
                   </div>
@@ -449,7 +449,7 @@ const PricingCard = () => {
                         onClick={() => buyFunction("ultra_pro")}
                         className="w-full py-2 px-4 rounded-lg flex items-center justify-center bg-P-Green1 text-white shadow-[inset_4px_4px_8px_#2a322179] hover:shadow-[inset_0px_0px_0px_#2A3221] font-roboto font-medium text-base"
                       >
-                        {isLoggedIn ? "Upgrade" : "Start After 30 Days"}
+                        {isLoggedIn ? "Upgrade" : "Starts After 30 Days"}
                       </button>
                     </div>
                   </div>
