@@ -729,7 +729,7 @@ function UserPage() {
 
         <div
           id="sidebarid"
-          className={`bg-white absolute shadow-lg transition-all duration-300 overflow-y-auto h-screen z-[999999999999999999999] ${
+          className={`bg-white absolute shadow-lg transition-all duration-300 overflow-y-auto h-screen z-50 ${
             isOpen ? "w-64" : "w-12"
           } lg:w-[20rem]`}
         >

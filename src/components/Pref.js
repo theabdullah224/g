@@ -196,7 +196,7 @@ function Pref() {
         </span>
       </button>
       {menuStates[menu].open && (
-        <ul className="absolute z-50 left-0 mt-2 bg-white border border-gray-300 w-full px-2 py-2">
+        <ul className="absolute z-40 left-0 mt-2 bg-white border border-gray-300 w-full px-2 py-2">
           {title === "Tell us about your food allergy" &&(
            <input
            type="text"
