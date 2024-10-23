@@ -207,6 +207,16 @@ function Pref() {
            placeholder="Tell us about your food allergy"
          />
           )}
+          {title === "Tell us about the food you dislike" &&(
+           <input
+           type="text"
+           value={menuStates[menu].inputValue || ""}
+           onChange={(e) => handleInputChange(menu, e.target.value)} 
+           onBlur={() => handleOptionSelect(menu, menuStates[menu].inputValue)}  // Auto-select on blur (when input loses focus)
+           className="w-full border-2 py-2 text-xs sm:text-sm rounded-md sm:rounded-lg px-2"
+           placeholder="Tell us about the food you dislike"
+         />
+          )}
           {options.map((option) => (
             <li key={option}>
               <span
